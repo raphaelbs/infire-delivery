@@ -13,6 +13,7 @@ module.exports = {
       "sanduiche",
       "batata",
     ],
+    siteUrl: `https://infire-delivery.web.app/`,
   },
   plugins: [
     {
@@ -60,7 +61,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://infire-delivery.apps.com`,
+        siteUrl: `https://infire-delivery.web.app/`,
       },
     },
     {
@@ -70,5 +71,6 @@ module.exports = {
         display: "swap",
       },
     },
+    "gatsby-plugin-robots-txt",
   ],
 };
