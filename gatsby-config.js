@@ -3,7 +3,7 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `InFire`,
-    description: `O seu lanche feito direto na fornalha`,
+    description: `Levamos qualidade e diferencial em sua casa! Somos 🔥 IN FIRE 🔥`,
     author: `InFire`,
     keywords: [
       "lanche",
