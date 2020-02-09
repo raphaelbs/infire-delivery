@@ -1,47 +1,53 @@
 import React from "react";
 import { SocialIcon } from "react-social-icons";
-import { Box, Link } from "@material-ui/core";
+import { useFirebase } from "gatsby-plugin-firebase";
+
+import { Box, Link, Button } from "@material-ui/core";
 import { withTheme } from "@material-ui/styles";
+
 import { WHATSAPP_URL, INSTAGRAM_URL } from "../constants";
 
 const iconStyle = { width: 32, height: 32, marginLeft: 4 };
+const buttonStyle = { padding: 8, paddingRight: 0 };
 
-const Social = ({ theme }) => (
-  <Box display="flex" flexDirection="column" alignItems="flex-end">
-    <Box my={1}>
-      <Link
-        color="textPrimary"
-        variant="body2"
-        href={INSTAGRAM_URL}
-        underline="always"
-      >
-        @infiredelivery
-      </Link>
-      <SocialIcon
-        url={INSTAGRAM_URL}
-        bgColor={theme.palette.primary.main}
-        fgColor="white"
-        style={iconStyle}
-      />
+const Social = ({ theme }) => {
+  const [analytics, setAnalytics] = React.useState(null);
+
+  useFirebase(firebase => {
+    setAnalytics(firebase.analytics());
+  }, []);
+
+  const onClick = (href, analyticEventName) => () => {
+    analytics.logEvent(analyticEventName);
+    window.open(href, "_blank");
+  };
+
+  return (
+    <Box display="flex" flexDirection="column" alignItems="flex-end">
+      <Button style={buttonStyle} onClick={onClick(INSTAGRAM_URL, "instagram")}>
+        <Link color="textPrimary" variant="body2" underline="always">
+          @infiredelivery
+        </Link>
+        <SocialIcon
+          network="instagram"
+          bgColor={theme.palette.primary.main}
+          fgColor="white"
+          style={iconStyle}
+        />
+      </Button>
+      <Button style={buttonStyle} onClick={onClick(WHATSAPP_URL, "whatsapp")}>
+        <Link color="textPrimary" variant="body2" underline="always">
+          (37) 98832-9573
+        </Link>
+        <SocialIcon
+          network="whatsapp"
+          bgColor={theme.palette.primary.main}
+          fgColor="white"
+          style={iconStyle}
+        />
+      </Button>
     </Box>
-    <Box my={1}>
-      <Link
-        color="textPrimary"
-        variant="body2"
-        href={WHATSAPP_URL}
-        underline="always"
-      >
-        (37) 98832-9573
-      </Link>
-      <SocialIcon
-        url={WHATSAPP_URL}
-        network="whatsapp"
-        bgColor={theme.palette.primary.main}
-        fgColor="white"
-        style={iconStyle}
-      />
-    </Box>
-  </Box>
-);
+  );
+};
 
 export default withTheme(Social);
