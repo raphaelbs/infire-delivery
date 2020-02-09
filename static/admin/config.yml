@@ -14,5 +14,4 @@ collections:
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Descrição", name: "description", widget: "string" }
       - { label: "Imagem", name: "image", widget: "image" }
-      - { label: "Preço", name: "price", widget: "number" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Preço", name: "price", widget: "number", valueType: "float" }
