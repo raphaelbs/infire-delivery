@@ -1,0 +1,52 @@
+{
+  "name": "infire-delivery",
+  "private": true,
+  "description": "InFire delivery",
+  "version": "0.1.0",
+  "author": "Raphael Brandão <raphael.b.souza@hotmail.com>",
+  "dependencies": {
+    "@material-ui/core": "^4.8.2",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.8.2",
+    "dayjs": "^1.8.18",
+    "firebase": "^7.6.1",
+    "gatsby": "^2.18.12",
+    "gatsby-image": "^2.2.34",
+    "gatsby-plugin-canonical-urls": "^2.1.18",
+    "gatsby-plugin-firebase": "^0.1.7",
+    "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-manifest": "^2.2.31",
+    "gatsby-plugin-offline": "^3.0.30",
+    "gatsby-plugin-react-helmet": "^3.1.16",
+    "gatsby-plugin-sharp": "^2.3.5",
+    "gatsby-source-filesystem": "^2.1.40",
+    "gatsby-theme-material-ui": "^1.0.6",
+    "gatsby-transformer-sharp": "^2.3.7",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "react-intersection-observer": "^8.25.2",
+    "react-social-icons": "^4.1.0",
+    "react-text-mask": "^5.4.3"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "prettier": "^1.19.1",
+    "prettier-eslint": "^9.0.1"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raphaelbs/infire-delivery"
+  }
+}
