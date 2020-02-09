@@ -8,12 +8,13 @@ import {
   CardContent,
   Typography,
   CardActions,
-  IconButton,
   Box,
+  Button,
 } from "@material-ui/core";
-import ShareIcon from "@material-ui/icons/Share";
 import PhotoIcon from "@material-ui/icons/Photo";
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import { makeStyles } from "@material-ui/styles";
+import { WHATSAPP_URL, PEDIR_TEXT } from "../constants";
 
 const imageStyle = { width: 256, height: 256, margin: "0 auto" };
 
@@ -23,11 +24,12 @@ const imageStyles = makeStyles(theme => ({
 
 const cardStyles = makeStyles(theme => ({
   root: {
-    marginBottom: theme.spacing(2),
+    margin: "0 auto",
+    maxWidth: 400,
   },
 }));
 
-const displayPrice = value => `R$ ${(value + "").replace(".", ",")}`;
+const displayPrice = value => `R$ ${(value.toFixed(2) + "").replace(".", ",")}`;
 
 const Item = ({ title, image, price, description, theme }) => {
   const [src, setSrc] = React.useState("");
@@ -58,6 +60,9 @@ const Item = ({ title, image, price, description, theme }) => {
     </Box>
   );
 
+  const pedirUrl = WHATSAPP_URL + "?text=" + PEDIR_TEXT(title);
+  const onPedir = () => window.open(pedirUrl, "_blank");
+
   const item = (
     <Card classes={cardClass}>
       <CardHeader title={title} />
@@ -68,17 +73,24 @@ const Item = ({ title, image, price, description, theme }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        {/* <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton> */}
-        <Typography variant="h5" color="secondary" component="p">
-          {displayPrice(price)}
-        </Typography>
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={onPedir}
+          fullWidth
+        >
+          <Typography>Pedir - {displayPrice(price)}</Typography>
+          <OpenInNewIcon style={{ marginLeft: 4 }} fontSize="small" />
+        </Button>
       </CardActions>
     </Card>
   );
 
-  return <div ref={ref}>{item}</div>;
+  return (
+    <Box m={1} flex={1} ref={ref}>
+      {item}
+    </Box>
+  );
 };
 
 export default Item;
