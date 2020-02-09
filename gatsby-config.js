@@ -50,7 +50,7 @@ module.exports = {
         short_name: `InFire`,
         start_url: `/`,
         background_color: `#303030`,
-        theme_color: `#f57c00`,
+        theme_color: `#7A3D00`,
         display: `minimal-ui`,
         icon: `src/images/infire-delivery-icon.png`, // This path is relative to the root of the site.
       },
