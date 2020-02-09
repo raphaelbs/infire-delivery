@@ -13,7 +13,7 @@ const theme = createMuiTheme({
     tonalOffset: 0.3,
   },
   typography: {
-    fontFamily: "Merriweather, Arial",
+    fontFamily: "Quattrocento Sans, Arial",
   },
 });
 
