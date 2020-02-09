@@ -31,7 +31,7 @@ const cardStyles = makeStyles(theme => ({
 
 const displayPrice = value => `R$ ${(value.toFixed(2) + "").replace(".", ",")}`;
 
-const Item = ({ title, image, price, description, theme }) => {
+const Item = ({ title, image, price, description }) => {
   const [src, setSrc] = React.useState("");
   const [analytics, setAnalytics] = React.useState(null);
   const [storage, setStorage] = React.useState(null);
@@ -51,7 +51,7 @@ const Item = ({ title, image, price, description, theme }) => {
         .getDownloadURL()
         .then(url => setSrc(url));
     }
-  }, [inView, storage]);
+  }, [inView, storage, image, src]);
 
   const imageComponent = src ? (
     <CardMedia component="img" src={src} aria-hidden classes={imageClass} />
