@@ -1,22 +1,18 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 
 import { useFirebase } from "gatsby-plugin-firebase";
 
 import Item from "../components/item";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import { Box } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
-  section: {
-    paddingTop: 16,
-    paddingBottom: 16,
-  },
-}));
+const sortByOrder = (
+  { order: order1 = Infinity },
+  { order: order2 = Infinity }
+) => (order1 > order2 ? 1 : -1);
 
 const IndexPage = () => {
-  const classes = useStyles();
-
   const [cardapio, setCardapio] = React.useState([]);
   const [analytics, setAnalytics] = React.useState(null);
 
@@ -40,13 +36,13 @@ const IndexPage = () => {
   }, []);
 
   return (
-    <Layout>
-      <SEO title="Cardápio" />
-      <section className={classes.section}>
-        {cardapio.map(item => (
+    <Layout subtitle="Cardápio online">
+      <SEO title="InFire Delivery" description="Cardápio online" />
+      <Box component="section" display="flex" flexWrap="wrap">
+        {cardapio.sort(sortByOrder).map(item => (
           <Item {...item} key={item.id} />
         ))}
-      </section>
+      </Box>
     </Layout>
   );
 };
