@@ -24,7 +24,9 @@ const Header = ({ siteTitle, subtitle }) => (
               </Link>
             </Typography>
             {subtitle ? (
-              <Typography variant="subtitle">{subtitle}</Typography>
+              <Typography variant="subtitle2" component="h1">
+                {subtitle}
+              </Typography>
             ) : null}
           </Box>
         </Box>
