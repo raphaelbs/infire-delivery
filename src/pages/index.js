@@ -14,11 +14,8 @@ const sortByOrder = (
 
 const IndexPage = () => {
   const [cardapio, setCardapio] = React.useState([]);
-  const [analytics, setAnalytics] = React.useState(null);
 
   useFirebase(firebase => {
-    setAnalytics(firebase.analytics());
-
     const db = firebase.firestore();
     db.collection("cardapio")
       .get()

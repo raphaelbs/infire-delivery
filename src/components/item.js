@@ -33,18 +33,19 @@ const displayPrice = value => `R$ ${(value.toFixed(2) + "").replace(".", ",")}`;
 
 const Item = ({ title, image, price, description, theme }) => {
   const [src, setSrc] = React.useState("");
-  const [storage, setStorage] = React.useState();
+  const [analytics, setAnalytics] = React.useState(null);
+  const [storage, setStorage] = React.useState(null);
   const [ref, inView] = useInView({ threshold: 0 });
   const imageClass = imageStyles();
   const cardClass = cardStyles();
 
   useFirebase(firebase => {
     setStorage(firebase.storage());
+    setAnalytics(firebase.analytics());
   }, []);
 
   useEffect(() => {
     if (inView && !src) {
-      console.log(title);
       storage
         .ref(image)
         .getDownloadURL()
@@ -61,7 +62,10 @@ const Item = ({ title, image, price, description, theme }) => {
   );
 
   const pedirUrl = WHATSAPP_URL + "?text=" + PEDIR_TEXT(title);
-  const onPedir = () => window.open(pedirUrl, "_blank");
+  const onPedir = () => {
+    analytics.logEvent("pedir_clicked", { title, price });
+    window.open(pedirUrl, "_blank");
+  };
 
   const item = (
     <Card classes={cardClass}>
