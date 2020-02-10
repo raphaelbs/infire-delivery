@@ -3,7 +3,7 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `InFire`,
-    description: `Levamos qualidade e diferencial em sua casa! Somos 🔥 IN FIRE 🔥`,
+    description: `Levamos qualidade e diferencial em sua casa! Somos 🔥 IN FIRE 🔥. Delivery de lanches em Divinópolis.`,
     author: `InFire`,
     keywords: [
       "lanche",

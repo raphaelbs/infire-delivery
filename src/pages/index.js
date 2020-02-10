@@ -36,7 +36,7 @@ const IndexPage = () => {
 
   return (
     <Layout subtitle="Cardápio online">
-      <SEO title="InFire Delivery" description="Cardápio online" />
+      <SEO title="InFire Delivery" />
       <Box component="section" display="flex" flexWrap="wrap">
         {cardapio.sort(sortByOrder).map(item => (
           <Item {...item} key={item.id} />
