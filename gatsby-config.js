@@ -22,8 +22,8 @@ module.exports = {
         features: {
           auth: false,
           database: false,
-          firestore: true,
-          storage: true,
+          firestore: false,
+          storage: false,
           messaging: false,
           functions: false,
           performance: true,
@@ -31,19 +31,45 @@ module.exports = {
         },
       },
     },
-    `gatsby-theme-material-ui`,
-    // If you want to use styled components you should add the plugin here.
-    // 'gatsby-plugin-styled-components',
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/images/uploads`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `items`,
+        path: `${__dirname}/_cardapio/item`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        // CommonMark mode (default: true)
+        commonmark: true,
+        // Footnotes mode (default: true)
+        footnotes: true,
+        // Pedantic mode (default: true)
+        pedantic: true,
+        // GitHub Flavored Markdown mode (default: true)
+        gfm: true,
+        // Plugins configs
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 128,
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -53,11 +79,9 @@ module.exports = {
         background_color: `#303030`,
         theme_color: `#7A3D00`,
         display: `minimal-ui`,
-        icon: `src/images/infire-delivery-icon.png`, // This path is relative to the root of the site.
+        icon: `static/images/uploads/infire-delivery-icon.png`,
       },
     },
-    // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
@@ -71,6 +95,14 @@ module.exports = {
         display: "swap",
       },
     },
+    `gatsby-theme-material-ui`,
+    // If you want to use styled components you should add the plugin here.
+    // 'gatsby-plugin-styled-components',
+    `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    // To learn more, visit: https://gatsby.dev/offline
+    `gatsby-plugin-offline`,
     "gatsby-plugin-robots-txt",
     "gatsby-plugin-netlify-cms",
   ],
