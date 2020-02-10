@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useFirebase } from "gatsby-plugin-firebase";
-import { useInView } from "react-intersection-observer";
 import {
   Card,
   CardHeader,
@@ -11,7 +10,6 @@ import {
   Box,
   Button,
 } from "@material-ui/core";
-import PhotoIcon from "@material-ui/icons/Photo";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import { makeStyles } from "@material-ui/styles";
 import { WHATSAPP_URL, PEDIR_TEXT } from "../constants";
@@ -32,34 +30,13 @@ const cardStyles = makeStyles(theme => ({
 const displayPrice = value => `R$ ${(value.toFixed(2) + "").replace(".", ",")}`;
 
 const Item = ({ title, image, price, description }) => {
-  const [src, setSrc] = React.useState("");
   const [analytics, setAnalytics] = React.useState(null);
-  const [storage, setStorage] = React.useState(null);
-  const [ref, inView] = useInView({ threshold: 0 });
   const imageClass = imageStyles();
   const cardClass = cardStyles();
 
   useFirebase(firebase => {
-    setStorage(firebase.storage());
     setAnalytics(firebase.analytics());
   }, []);
-
-  useEffect(() => {
-    if (inView && !src) {
-      storage
-        .ref(image)
-        .getDownloadURL()
-        .then(url => setSrc(url));
-    }
-  }, [inView, storage, image, src]);
-
-  const imageComponent = src ? (
-    <CardMedia component="img" src={src} aria-hidden classes={imageClass} />
-  ) : (
-    <Box style={imageStyle}>
-      <PhotoIcon color="disabled" style={imageStyle} />
-    </Box>
-  );
 
   const pedirUrl = WHATSAPP_URL + "?text=" + PEDIR_TEXT(title);
   const onPedir = () => {
@@ -67,32 +44,28 @@ const Item = ({ title, image, price, description }) => {
     window.open(pedirUrl, "_blank");
   };
 
-  const item = (
-    <Card classes={cardClass}>
-      <CardHeader title={title} />
-      {imageComponent}
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {description}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button
-          variant="outlined"
-          color="secondary"
-          onClick={onPedir}
-          fullWidth
-        >
-          <Typography>Pedir - {displayPrice(price)}</Typography>
-          <OpenInNewIcon style={{ marginLeft: 4 }} fontSize="small" />
-        </Button>
-      </CardActions>
-    </Card>
-  );
-
   return (
-    <Box m={1} flex={1} ref={ref}>
-      {item}
+    <Box m={1} flex={1}>
+      <Card classes={cardClass}>
+        <CardHeader title={title} />
+        <CardMedia component="img" src={image} aria-hidden classes={imageClass} />
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={onPedir}
+            fullWidth
+          >
+            <Typography>Pedir - {displayPrice(price)}</Typography>
+            <OpenInNewIcon style={{ marginLeft: 4 }} fontSize="small" />
+          </Button>
+        </CardActions>
+      </Card>
     </Box>
   );
 };

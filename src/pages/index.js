@@ -1,11 +1,10 @@
 import React from "react";
 
-import { useFirebase } from "gatsby-plugin-firebase";
-
 import Item from "../components/item";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { Box } from "@material-ui/core";
+import { useStaticQuery, graphql } from "gatsby";
 
 const sortByOrder = (
   { order: order1 = Infinity },
@@ -13,24 +12,27 @@ const sortByOrder = (
 ) => (order1 > order2 ? 1 : -1);
 
 const IndexPage = () => {
-  const [cardapio, setCardapio] = React.useState([]);
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            id
+            frontmatter {
+              description
+              image
+              price
+              order
+              title
+            }
+          }
+        }
+      }
+    }
+  `);
 
-  useFirebase(firebase => {
-    const db = firebase.firestore();
-    db.collection("cardapio")
-      .get()
-      .then(querySnapshot => {
-        const cardapioFirestore = [];
-        querySnapshot.forEach(doc => {
-          const data = doc.data();
-          cardapioFirestore.push({
-            id: doc.id,
-            ...data,
-          });
-        });
-        setCardapio(cardapioFirestore);
-      });
-  }, []);
+  const cardapio = data.allMarkdownRemark.edges
+    .map((edge) => ({ id: edge.node.id, ...edge.node.frontmatter }));
 
   return (
     <Layout subtitle="Cardápio online">
