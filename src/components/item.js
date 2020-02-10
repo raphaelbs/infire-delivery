@@ -38,7 +38,7 @@ const Item = ({ title, image, price, description }) => {
     trackCustomEvent({
       category: 'item',
       action: title,
-      value: price,
+      value: parseInt(price * 100, 10),
     })
     window.open(pedirUrl, "_blank");
   };
