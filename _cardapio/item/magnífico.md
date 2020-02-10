@@ -6,3 +6,4 @@ description: >-
   cebola caramelizada, maionese in fire
 image: /images/uploads/magnifico.png
 price: 18.9
+order: 3

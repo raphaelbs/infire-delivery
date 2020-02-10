@@ -15,3 +15,4 @@ collections:
       - { label: "Descrição", name: "description", widget: "string" }
       - { label: "Imagem", name: "image", widget: "image" }
       - { label: "Preço", name: "price", widget: "number", valueType: "float" }
+      - { label: "Ordem", name: "order", widget: "number" }
