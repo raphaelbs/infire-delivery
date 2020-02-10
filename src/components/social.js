@@ -1,6 +1,6 @@
 import React from "react";
 import { SocialIcon } from "react-social-icons";
-import { useFirebase } from "gatsby-plugin-firebase";
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
 import { Box, Link, Button } from "@material-ui/core";
 import { withTheme } from "@material-ui/styles";
@@ -11,14 +11,11 @@ const iconStyle = { width: 32, height: 32, marginLeft: 4 };
 const buttonStyle = { padding: "8px 0 8px 8px" };
 
 const Social = ({ theme }) => {
-  const [analytics, setAnalytics] = React.useState(null);
-
-  useFirebase(firebase => {
-    setAnalytics(firebase.analytics());
-  }, []);
-
   const onClick = (href, analyticEventName) => () => {
-    analytics.logEvent(analyticEventName);
+    trackCustomEvent({
+      category: 'social-media',
+      action: analyticEventName,
+    })
     window.open(href, "_blank");
   };
 

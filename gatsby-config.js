@@ -17,18 +17,9 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-plugin-firebase",
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        features: {
-          auth: false,
-          database: false,
-          firestore: false,
-          storage: false,
-          messaging: false,
-          functions: false,
-          performance: true,
-          analytics: true,
-        },
+        trackingId: "UA-158091113-1",
       },
     },
     {

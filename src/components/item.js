@@ -1,5 +1,5 @@
 import React from "react";
-import { useFirebase } from "gatsby-plugin-firebase";
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 import {
   Card,
   CardHeader,
@@ -30,17 +30,16 @@ const cardStyles = makeStyles(theme => ({
 const displayPrice = value => `R$ ${(value.toFixed(2) + "").replace(".", ",")}`;
 
 const Item = ({ title, image, price, description }) => {
-  const [analytics, setAnalytics] = React.useState(null);
   const imageClass = imageStyles();
   const cardClass = cardStyles();
 
-  useFirebase(firebase => {
-    setAnalytics(firebase.analytics());
-  }, []);
-
   const pedirUrl = WHATSAPP_URL + "?text=" + PEDIR_TEXT(title);
   const onPedir = () => {
-    analytics.logEvent("pedir_clicked", { title, price });
+    trackCustomEvent({
+      category: 'item',
+      action: title,
+      value: price,
+    })
     window.open(pedirUrl, "_blank");
   };
 
