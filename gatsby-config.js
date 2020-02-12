@@ -86,6 +86,7 @@ module.exports = {
         display: "swap",
       },
     },
+    `gatsby-plugin-sitemap`,
     `gatsby-theme-material-ui`,
     // If you want to use styled components you should add the plugin here.
     // 'gatsby-plugin-styled-components',
