@@ -32,8 +32,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `items`,
-        path: `${__dirname}/_cardapio/item`,
+        name: `produtos`,
+        path: `${__dirname}/_docs/produto`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `configs`,
+        path: `${__dirname}/_docs/configs`,
       },
     },
     {

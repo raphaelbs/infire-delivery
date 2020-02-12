@@ -4,9 +4,9 @@ backend:
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 collections:
-  - name: "item" # Used in routes, e.g., /admin/collections/blog
-    label: "Item" # Used in the UI
-    folder: "_cardapio/item" # The path to the folder where the documents are stored
+  - name: "produto" # Used in routes, e.g., /admin/collections/blog
+    label: "Produto" # Used in the UI
+    folder: "_docs/produto" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
@@ -15,3 +15,14 @@ collections:
       - { label: "Imagem", name: "image", widget: "image" }
       - { label: "Preço", name: "price", widget: "number", valueType: "float" }
       - { label: "Ordem", name: "order", widget: "number" }
+  - name: "configs" # Used in routes, e.g., /admin/collections/blog
+    label: "Configurações" # Used in the UI
+    files:
+      - file: "_docs/configs/seo"
+        label: "SEO"
+        name: "seo"
+        fields: # The fields for each document, usually in front matter
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descrição", name: "description", widget: "string" }
+          - { label: "Imagem", name: "image", widget: "image" }
+          - { label: "Palavras-Chave", name: "keywords", widget: "list" }
