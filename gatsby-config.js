@@ -86,6 +86,16 @@ module.exports = {
         display: "swap",
       },
     },
+    {
+      resolve: `gatsby-plugin-netlify-cms`,
+      options: {
+        /**
+         * One convention is to place your Netlify CMS customization code in a
+         * `src/cms` directory.
+         */
+        modulePath: `${__dirname}/src/cms/cms.js`,
+      },
+    },
     `gatsby-plugin-sitemap`,
     `gatsby-theme-material-ui`,
     // If you want to use styled components you should add the plugin here.
@@ -96,6 +106,5 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
     "gatsby-plugin-robots-txt",
-    "gatsby-plugin-netlify-cms",
   ],
 };
