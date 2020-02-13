@@ -3,7 +3,7 @@ import React from "react";
 import Item from "../components/item";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { Box } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import { useStaticQuery, graphql } from "gatsby";
 
 const sortByOrder = (
@@ -37,10 +37,14 @@ const IndexPage = () => {
   return (
     <Layout subtitle="Cardápio online">
       <SEO title="InFire Delivery" />
+      <Box mx={1} my={2}>
+        <Typography variant="h4" component="h1" color="secondary">Cardápio</Typography>
+      </Box>
       <Box component="section" display="flex" flexWrap="wrap">
-        {cardapio.sort(sortByOrder).map(item => (
-          <Item {...item} key={item.id} />
-        ))}
+        {cardapio
+          .sort(sortByOrder)
+          .map(item => (<Item {...item} key={item.id} />))
+        }
       </Box>
     </Layout>
   );
