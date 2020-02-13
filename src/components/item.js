@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import { makeStyles } from "@material-ui/styles";
+import Infire from './infire';
 import { WHATSAPP_URL, PEDIR_TEXT } from "../constants";
 
 const imageStyle = { width: 256, height: 256, margin: "0 auto" };
@@ -49,19 +50,21 @@ const Item = ({ title, image, price, description }) => {
         <CardHeader title={title} />
         <CardMedia component="img" src={image} aria-hidden classes={imageClass} />
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {description}
+          <Typography variant="body1" color="textSecondary" component="p">
+            <Infire text={description} />
           </Typography>
         </CardContent>
         <CardActions>
           <Button
-            variant="outlined"
-            color="secondary"
+            variant="contained"
+            color="primary"
             onClick={onPedir}
+            disableElevation
+            disableRipple
+            endIcon={<OpenInNewIcon fontSize="small" />}
             fullWidth
           >
             <Typography>Pedir - {displayPrice(price)}</Typography>
-            <OpenInNewIcon style={{ marginLeft: 4 }} fontSize="small" />
           </Button>
         </CardActions>
       </Card>
