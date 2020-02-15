@@ -1,10 +1,12 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+
 import Item from "../components/item";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { Box, Typography } from "@material-ui/core";
 
 const sortByOrder = (
   { order: order1 = Infinity },

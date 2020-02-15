@@ -2,8 +2,10 @@ import React from "react";
 import { SocialIcon } from "react-social-icons";
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
-import { Box, Link, Button } from "@material-ui/core";
-import { withTheme } from "@material-ui/styles";
+import Box from "@material-ui/core/Box";
+import Link from "@material-ui/core/Link";
+import Button from "@material-ui/core/Button";
+import withTheme from "@material-ui/styles/withTheme";
 
 import { WHATSAPP_URL, INSTAGRAM_URL } from "../constants";
 

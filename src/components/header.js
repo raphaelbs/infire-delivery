@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { AppBar, Toolbar, Box } from "@material-ui/core";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Box from "@material-ui/core/Box";
 
 import Social from "./social";
 import LogoImg from "./logoImg";

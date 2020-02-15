@@ -1,18 +1,18 @@
 import React from "react";
 import GatsbyImage from "gatsby-image";
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
-import {
-  Card,
-  CardHeader,
-  CardMedia,
-  CardContent,
-  Typography,
-  CardActions,
-  Box,
-  Button,
-} from "@material-ui/core";
+
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import CardActions from "@material-ui/core/CardActions";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
 import OpenInNewIcon from "@material-ui/icons/OpenInNew";
-import { makeStyles } from "@material-ui/styles";
+import makeStyles from "@material-ui/styles/makeStyles";
+
 import Infire from './infire';
 import { WHATSAPP_URL, PEDIR_TEXT } from "../constants";
 

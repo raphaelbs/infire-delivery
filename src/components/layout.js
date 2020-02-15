@@ -9,8 +9,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 
+import withTheme from "@material-ui/styles/withTheme";
+
 import Header from "./header";
-import { withTheme } from "@material-ui/styles";
 
 const Layout = ({ children, subtitle }) => {
   const data = useStaticQuery(graphql`
