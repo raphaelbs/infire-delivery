@@ -75,7 +75,7 @@ module.exports = {
         short_name: `InFire`,
         start_url: `/`,
         background_color: `#303030`,
-        theme_color: `#7A3D00`,
+        theme_color: `#050505`,
         display: `minimal-ui`,
         icon: `static/images/uploads/infire-delivery-icon.png`,
       },
