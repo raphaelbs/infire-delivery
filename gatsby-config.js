@@ -87,10 +87,22 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-theme-material-ui`,
       options: {
-        fonts: [`Quattrocento Sans`],
-        display: "swap",
+        stylesConfig: {
+          disableAutoprefixing: true,
+        },
+        webFontsConfig: {
+          fonts: {
+            google: [
+              {
+                family: `Quattrocento Sans`,
+                variants: ["300", "400", "500"],
+                fontDisplay: 'swap',
+              },
+            ],
+          },
+        },
       },
     },
     {
@@ -104,7 +116,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
-    `gatsby-theme-material-ui`,
     // If you want to use styled components you should add the plugin here.
     // 'gatsby-plugin-styled-components',
     `gatsby-plugin-react-helmet`,
