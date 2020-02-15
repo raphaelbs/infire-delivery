@@ -1,10 +1,10 @@
 import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
 import Item from "../components/item";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { Box, Typography } from "@material-ui/core";
-import { useStaticQuery, graphql } from "gatsby";
 
 const sortByOrder = (
   { order: order1 = Infinity },
@@ -20,7 +20,13 @@ const IndexPage = () => {
             id
             frontmatter {
               description
-              image
+              image {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
               price
               order
               title

@@ -1,4 +1,5 @@
 import React from "react";
+import GatsbyImage from "gatsby-image";
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 import {
   Card,
@@ -18,7 +19,7 @@ import { WHATSAPP_URL, PEDIR_TEXT } from "../constants";
 const imageStyle = { width: 256, height: 256, margin: "0 auto" };
 
 const imageStyles = makeStyles(theme => ({
-  media: imageStyle,
+  root: imageStyle,
 }));
 
 const cardStyles = makeStyles(theme => ({
@@ -31,8 +32,8 @@ const cardStyles = makeStyles(theme => ({
 const displayPrice = value => `R$ ${(value.toFixed(2) + "").replace(".", ",")}`;
 
 const Item = ({ title, image, price, description }) => {
-  const imageClass = imageStyles();
   const cardClass = cardStyles();
+  const imageClass = imageStyles();
 
   const pedirUrl = WHATSAPP_URL + "?text=" + PEDIR_TEXT(title);
   const onPedir = () => {
@@ -48,7 +49,14 @@ const Item = ({ title, image, price, description }) => {
     <Box m={1} flex={1}>
       <Card classes={cardClass}>
         <CardHeader title={title} />
-        <CardMedia component="img" src={image} aria-hidden classes={imageClass} />
+        <CardMedia classes={imageClass}>
+          <GatsbyImage
+            width={256}
+            height={256}
+            fluid={image.childImageSharp.fluid}
+            loading="lazy"
+          />
+        </CardMedia>
         <CardContent>
           <Typography variant="body1" color="textSecondary" component="p">
             <Infire text={description} />
