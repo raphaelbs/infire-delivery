@@ -3,19 +3,19 @@ import { Typography } from '@material-ui/core';
 
 const pattern = new RegExp(`(in\\s*fire)`, 'gi');
 
-const InFireText = <Typography color="secondary" component="span">InFire</Typography>;
+const InFireText = ({ index }) => <Typography key={index} color="secondary" component="span">InFire</Typography>;
 
-const checkForInFire = (text) => {
+const checkForInFire = (text, index) => {
   if (pattern.exec(text)) {
-    return InFireText;
+    return <InFireText index={index} />;
   }
-  return text;
+  return <span key={index}>text</span>;
 }
 
 const Infire = ({ text }) => {
   const textParts = text.split(pattern);
 
-  return <span>{textParts.map((textPart) => checkForInFire(textPart) )}</span>;
+  return <span>{textParts.map((textPart, index) => checkForInFire(textPart, index) )}</span>;
 };
 
 export default Infire;
