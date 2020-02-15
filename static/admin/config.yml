@@ -18,7 +18,7 @@ collections:
   - name: "configs" # Used in routes, e.g., /admin/collections/blog
     label: "Configurações" # Used in the UI
     files:
-      - file: "_docs/configs/seo"
+      - file: "_docs/configs/seo.md"
         label: "SEO"
         name: "seo"
         fields: # The fields for each document, usually in front matter
