@@ -7,8 +7,11 @@ const LogoImg = ({ alt }) => {
     query {
       file(relativePath: { eq: "infire-logo.jpeg" }) {
         childImageSharp {
-          fixed(width: 96, height: 96) {
-            ...GatsbyImageSharpFixed
+          fixed(width: 96, height: 96, traceSVG: {
+            color: "#FFCF9E"
+            blackOnWhite: false
+          }) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }
