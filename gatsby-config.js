@@ -77,7 +77,7 @@ module.exports = {
         background_color: `#303030`,
         theme_color: `#050505`,
         display: `minimal-ui`,
-        icon: `static/images/uploads/infire-delivery-icon.png`,
+        icon: `static/images/uploads/infire-logo.jpeg`,
       },
     },
     {
