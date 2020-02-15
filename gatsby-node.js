@@ -19,7 +19,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         frontmatter.image = path.relative(
           path.dirname(node.fileAbsolutePath),
           path.join(__dirname, '/static/', image)
-        )
+        ).replace(/\\/g, '/');
       }
     }
   }
