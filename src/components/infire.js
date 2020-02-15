@@ -9,7 +9,7 @@ const checkForInFire = (text, index) => {
   if (pattern.exec(text)) {
     return <InFireText index={index} />;
   }
-  return <span key={index}>text</span>;
+  return <span key={index}>{text}</span>;
 }
 
 const Infire = ({ text }) => {
