@@ -48,13 +48,13 @@ const ItemCount = ({ itemId, updateBag, updateBagCount, bagCount }) => {
   
   return (
     <fieldset className={classes.fieldset}>
-      <legend><Typography variant="srOnly" id="quantidade">Defina a quantidade</Typography></legend>
+      <legend><Typography variant="srOnly" id={`quantidade-${itemId}`}>Defina a quantidade</Typography></legend>
 
       <Box display="flex" lineHeight="3" flexGrow="0">
         <IconButton edge="start" aria-label="diminuir" onClick={onClick(-1)}>
           <Remove />
         </IconButton>
-        <Typography variant="h6" className={classes.typography} aria-describedby="quantidade">
+        <Typography variant="h6" component="span" className={classes.typography} aria-describedby={`quantidade-${itemId}`}>
           {qtd}
         </Typography>
         <IconButton edge="end" aria-label="aumentar" onClick={onClick(1)}>

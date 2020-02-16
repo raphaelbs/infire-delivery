@@ -7,7 +7,7 @@ import Badge from "@material-ui/core/Badge";
 
 const BagIcon = ({ bagCount }) => {
   return (
-    <Badge badgeContent={bagCount} color="primary" max={99}>
+    <Badge aria-label="Quantidade de itens" badgeContent={bagCount} color="primary" max={99} showZero>
       <ShoppingCart />
     </Badge>
   );

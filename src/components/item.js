@@ -64,7 +64,7 @@ const Item = ({ id, title, image, price, description }) => {
         <CardActions>
           <Box display="flex" justifyContent="space-between" width="100%">
             <ItemCount itemId={id} />
-            <Typography color="secondary" variant="h6" className={classes.price}>
+            <Typography color="secondary" component="span" variant="h6" className={classes.price}>
               {displayPrice(price)}
             </Typography>
           </Box>
