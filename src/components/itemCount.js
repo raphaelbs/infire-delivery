@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Add from '@material-ui/icons/Add';
@@ -27,7 +27,7 @@ const itemCountStyles = makeStyles(theme => ({
   },
 }));
 
-const ItemCount = ({ itemId, updateBag, updateBagCount }) => {
+const ItemCount = ({ itemId, updateBag, updateBagCount, bagCount }) => {
   const classes = itemCountStyles();
   const [qtd, setQtd] = useState(0);
 
@@ -39,6 +39,12 @@ const ItemCount = ({ itemId, updateBag, updateBagCount }) => {
       updateBagCount(operation);
     }
   }
+
+  useEffect(() => {
+    if (bagCount === 0) {
+      setQtd(0);
+    }
+  }, [bagCount])
   
   return (
     <fieldset className={classes.fieldset}>
@@ -59,9 +65,11 @@ const ItemCount = ({ itemId, updateBag, updateBagCount }) => {
   )
 };
 
+const mapStateToProps = ({ bagCount }) => ({ bagCount });
+
 const mapDispatchToProps = (dispatch) => ({
   updateBag: (itemId, newQtd) => dispatch(updateBagAction(itemId, newQtd)),
   updateBagCount: (operation) => dispatch(updateBagCountAction(operation)),
 });
 
-export default connect(null, mapDispatchToProps)(ItemCount);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemCount);
