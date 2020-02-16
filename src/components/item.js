@@ -1,6 +1,5 @@
 import React from "react";
 import GatsbyImage from "gatsby-image";
-import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -9,12 +8,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import makeStyles from "@material-ui/styles/makeStyles";
 
 import Infire from './infire';
-import { WHATSAPP_URL, PEDIR_TEXT } from "../constants";
+import { displayPrice } from "../constants";
+import ItemCount from "./itemCount";
 
 const imageStyle = { width: 256, height: 256, margin: "0 auto" };
 
@@ -29,21 +27,18 @@ const cardStyles = makeStyles(theme => ({
   },
 }));
 
-const displayPrice = value => `R$ ${(value.toFixed(2) + "").replace(".", ",")}`;
+const styles = makeStyles(theme => ({
+  typography: {
+    lineHeight: 3,
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+  }
+}));
 
-const Item = ({ title, image, price, description }) => {
+const Item = ({ id, title, image, price, description }) => {
   const cardClass = cardStyles();
   const imageClass = imageStyles();
-
-  const pedirUrl = WHATSAPP_URL + "?text=" + PEDIR_TEXT(title);
-  const onPedir = () => {
-    trackCustomEvent({
-      category: 'item',
-      action: title,
-      value: parseInt(price * 100, 10),
-    })
-    window.open(pedirUrl, "_blank");
-  };
+  const classes = styles();
 
   return (
     <Box m={1} flex={1}>
@@ -63,17 +58,12 @@ const Item = ({ title, image, price, description }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={onPedir}
-            disableElevation
-            disableRipple
-            endIcon={<OpenInNewIcon fontSize="small" />}
-            fullWidth
-          >
-            <Typography>Pedir - {displayPrice(price)}</Typography>
-          </Button>
+          <Box display="flex" justifyContent="space-between" width="100%">
+            <ItemCount itemId={id} />
+            <Typography color="secondary" variant="h6" className={classes.typography}>
+              {displayPrice(price)}
+            </Typography>
+          </Box>
         </CardActions>
       </Card>
     </Box>
