@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { memo } from "react";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -31,4 +31,4 @@ Header.defaultProps = {
   siteTitle: ``,
 };
 
-export default Header;
+export default memo(Header);

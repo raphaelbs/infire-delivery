@@ -14,15 +14,7 @@ import withTheme from "@material-ui/styles/withTheme";
 import Header from "./header";
 
 const Layout = ({ children, subtitle }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+  const data = useStaticQuery(siteMetadata);
 
   return (
     <>
@@ -47,3 +39,13 @@ Layout.propTypes = {
 };
 
 export default withTheme(Layout);
+
+const siteMetadata = graphql`
+query SiteTitleQuery {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+}
+`;
