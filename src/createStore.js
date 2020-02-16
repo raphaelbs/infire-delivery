@@ -25,10 +25,12 @@ function reducer(state = initialStore, action) {
   }
 }
 
-const reduxEnhancer = (process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION__) ? window.__REDUX_DEVTOOLS_EXTENSION__() : undefined; 
+let reduxEnhancer = undefined;
 
-export default preloadedState => createStore(
-  reducer,
-  preloadedState,
-  reduxEnhancer,
-);
+try {
+  reduxEnhancer = process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+} catch (e) {}
+
+export default preloadedState =>
+  reduxEnhancer ? createStore(reducer, preloadedState, reduxEnhancer)
+  : createStore(reducer, preloadedState)
