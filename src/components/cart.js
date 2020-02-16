@@ -21,7 +21,6 @@ import makeStyles from '@material-ui/styles/makeStyles';
 import { clearBagAction } from '../effects/clearBag.effect';
 import { setBagVisibilityAction } from '../effects/setBagVisibility.effect';
 import CartContent from './cartContent';
-import cardapioGQL from '../graphql/cardapio';
 import { PEDIR_TEXT, WHATSAPP_URL } from '../constants';
 
 const dialogTitleStyles = makeStyles(theme => ({
@@ -70,6 +69,7 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
           Limpar sacola
         </Button>
         <Button
+          disableElevation
           disabled={!total}
           onClick={onPedir}
           color="primary"
@@ -92,3 +92,31 @@ export default compose(
   withTheme,
   connect(mapStateToProps, mapDispatchToProps)
 )(Cart);
+
+const cardapioGQL = graphql`
+query {
+  allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/produto/.*\\\\.md$/"}}) {
+    edges {
+      node {
+        id
+        frontmatter {
+          image {
+            childImageSharp {
+              fixed(width: 56, height: 56, traceSVG: {
+                color: "#050505"
+                blackOnWhite: true
+                turdSize: 10
+                threshold: 250
+                optTolerance: 0.6
+              }) {
+                ...GatsbyImageSharpFixed_withWebp_tracedSVG
+              }
+            }
+          }
+          price
+          title
+        }
+      }
+    }
+  }
+}`;

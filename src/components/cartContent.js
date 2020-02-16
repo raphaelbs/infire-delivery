@@ -30,7 +30,7 @@ const CartContent = ({ selectedItems, total }) => {
         <ListItem key={item.id}>
             <ListItemAvatar>
               <GatsbyImage
-                fluid={item.image.childImageSharp.fluid}
+                fixed={item.image.childImageSharp.fixed}
                 loading="lazy"
               />
           </ListItemAvatar>
