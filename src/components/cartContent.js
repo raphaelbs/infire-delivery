@@ -1,7 +1,5 @@
 import React from 'react';
-import { useStaticQuery } from 'gatsby';
 import GatsbyImage from 'gatsby-image';
-import { connect } from 'react-redux';
 
 import DialogContent from '@material-ui/core/DialogContent';
 import Typography from '@material-ui/core/Typography';
@@ -12,8 +10,8 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
-import cardapioGQL from '../graphql/cardapio';
 import { displayPrice } from '../constants';
+import EmptyCart from './emptyCart';
 import { makeStyles } from '@material-ui/styles';
 
 const dialogContentStyle = { padding: 0 };
@@ -23,50 +21,46 @@ const listItemStyle = makeStyles(theme => ({
   }
 }));
 
-const CartContent = ({ bag }) => {
-  const data = useStaticQuery(cardapioGQL);
+const CartContent = ({ selectedItems, total }) => {
   const listClass = listItemStyle();
 
-  const cardapio = data.allMarkdownRemark.edges
-  .reduce((edges, edge) => ({ ...edges, [edge.node.id]: edge.node.frontmatter }), {});
+  const list = (
+    <List>
+      {selectedItems.map((item) => (
+        <ListItem key={item.id}>
+            <ListItemAvatar>
+              <GatsbyImage
+                fluid={item.image.childImageSharp.fluid}
+                loading="lazy"
+              />
+          </ListItemAvatar>
+          <ListItemText
+            classes={listClass}
+            primary={item.title}
+            secondary={displayPrice(item.price)}
+          />
+          <ListItemSecondaryAction>
+            <Typography>x{item.qtd}</Typography>
+          </ListItemSecondaryAction>
+        </ListItem>
+      ))}
+      <Divider />
+      <ListItem key="total">
+        <ListItemText primary="Total" />
+        <ListItemSecondaryAction>
+          <Typography>{displayPrice(total)}</Typography>
+        </ListItemSecondaryAction>
+      </ListItem>
+    </List>
+  );
 
-  const filteredBag = Object.entries(bag).filter(([, qtd]) => qtd > 0);
-  const selectedItems = filteredBag.map(([id, qtd]) => ({ ...cardapio[id], qtd, id }));
-  const total = selectedItems.reduce((sum, { qtd, price }) => qtd * price + sum, 0);
+  const content = selectedItems.length ? list : <EmptyCart />;
 
   return (
     <DialogContent style={dialogContentStyle} dividers>
-      <List>
-        {selectedItems.map((item) => (
-          <ListItem key={item.id}>
-             <ListItemAvatar>
-                <GatsbyImage
-                  fluid={item.image.childImageSharp.fluid}
-                  loading="lazy"
-                />
-            </ListItemAvatar>
-            <ListItemText
-              classes={listClass}
-              primary={item.title}
-              secondary={displayPrice(item.price)}
-            />
-            <ListItemSecondaryAction>
-              <Typography>x{item.qtd}</Typography>
-            </ListItemSecondaryAction>
-          </ListItem>
-        ))}
-        <Divider />
-        <ListItem key="total">
-          <ListItemText primary="Total" />
-          <ListItemSecondaryAction>
-            <Typography>{displayPrice(total)}</Typography>
-          </ListItemSecondaryAction>
-        </ListItem>
-      </List>
+      {content}
     </DialogContent>
   )
 };
 
-const mapStateToProps = ({ bag }) => ({ bag });
-
-export default connect(mapStateToProps)(CartContent);
+export default CartContent;
