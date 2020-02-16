@@ -11,7 +11,7 @@ import Cardapio from "../components/cardapio";
 
 const IndexPage = () => (
   <Layout subtitle="Cardápio online">
-    <SEO title="InFire Delivery" />
+    <SEO title="Delivery" />
     <Box mx={1} my={2}>
       <Typography variant="h4" component="h1" color="secondary">Cardápio</Typography>
     </Box>
