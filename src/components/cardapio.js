@@ -1,10 +1,9 @@
 import React, { memo } from "react";
-import { useStaticQuery } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 
 import Box from '@material-ui/core/Box';
 
 import Item from "../components/item";
-import cardapioGQL from "../graphql/cardapio";
 
 const sortByOrder = (
   { order: order1 = Infinity },
@@ -29,3 +28,32 @@ const Cardapio = () => {
 
 export default memo(Cardapio);
 
+const cardapioGQL = graphql`
+query {
+  allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/produto/.*\\\\.md$/"}}) {
+    edges {
+      node {
+        id
+        frontmatter {
+          description
+          image {
+            childImageSharp {
+              fluid(traceSVG: {
+                color: "#050505"
+                blackOnWhite: true
+                turdSize: 10
+                threshold: 250
+                optTolerance: 0.6
+              }) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
+            }
+          }
+          price
+          order
+          title
+        }
+      }
+    }
+  }
+}`;
