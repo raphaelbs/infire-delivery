@@ -1,21 +1,13 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
-import logo from "../../static/images/uploads/infire-delivery-icon.png";
-
 function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(seoMetadata);
+  const data = useStaticQuery(seoMetadata);
+  const seo = data.allMarkdownRemark.edges[0].node.frontmatter;
 
-  const metaDescription = description || site.siteMetadata.description;
+  const metaDescription = description || seo.description;
 
   return (
     <Helmet
@@ -23,7 +15,7 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${seo.title}`}
       meta={[
         {
           name: `description`,
@@ -31,7 +23,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: "keywords",
-          content: site.siteMetadata.keywords.join(","),
+          content: seo.keywords.join(","),
         },
         {
           property: `og:title`,
@@ -47,7 +39,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: "og:image",
-          content: logo,
+          content: seo.image.publicURL,
         },
         {
           property: "og:image:width",
@@ -63,7 +55,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: seo.author,
         },
         {
           name: `twitter:title`,
@@ -95,12 +87,18 @@ export default memo(SEO);
 
 const seoMetadata = graphql`
 query {
-  site {
-    siteMetadata {
-      title
-      description
-      author
-      keywords
+  allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/seo\\\\.md$/"}}) {
+    edges {
+      node {
+        frontmatter {
+          title
+          description
+          image {
+            publicURL
+          }
+          keywords
+        }
+      }
     }
   }
 }
