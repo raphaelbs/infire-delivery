@@ -43,12 +43,14 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
 
   const pedirUrl = WHATSAPP_URL + "?text=" + PEDIR_TEXT(selectedItems);
   const onPedir = () => {
-    selectedItems.map(({ title, price }) => 
-      trackCustomEvent({
-        category: 'item',
-        action: title,
-        value: parseInt(price * 100, 10),
-      })
+    selectedItems.map(({ title, price, qtd }) => 
+      Array(qtd).fill(1).forEach(() => 
+        trackCustomEvent({
+          category: 'item',
+          action: title,
+          value: parseInt(price * 100, 10),
+        })
+      )
     );
     window.open(pedirUrl, "_blank");
   };
