@@ -1,3 +1,5 @@
+import { trackCustomEvent } from "gatsby-plugin-google-analytics";
+
 export const UPDATE_BAG_COUNT = 'UPDATE_BAG_COUNT';
 
 export const updateBagCountAction = (operation) => ({
@@ -5,7 +7,14 @@ export const updateBagCountAction = (operation) => ({
   operation,
 });
 
-export const handleUpdateBagCount = (state, { operation }) => ({
-  ...state,
-  bagCount: state.bagCount + operation,
-})
+export const handleUpdateBagCount = (state, { operation }) => {
+  const bagCount = state.bagCount + operation;
+
+  trackCustomEvent({
+    category: 'redux',
+    action: UPDATE_BAG_COUNT,
+    value: bagCount,
+  });
+
+  return { ...state, bagCount };
+};
