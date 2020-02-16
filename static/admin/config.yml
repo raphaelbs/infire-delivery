@@ -9,7 +9,7 @@ collections:
     folder: "_docs/produto" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
+    fields:
       - { label: "Título", name: "title", widget: "string" }
       - { label: "Descrição", name: "description", widget: "string" }
       - { label: "Imagem", name: "image", widget: "image" }
@@ -21,8 +21,14 @@ collections:
       - file: "_docs/configs/seo.md"
         label: "SEO"
         name: "seo"
-        fields: # The fields for each document, usually in front matter
+        fields:
           - { label: "Título", name: "title", widget: "string" }
           - { label: "Descrição", name: "description", widget: "string" }
           - { label: "Imagem", name: "image", widget: "image" }
           - { label: "Palavras-Chave", name: "keywords", widget: "list" }
+      - file: "_docs/paginas/home.md"
+        label: "Home"
+        name: "home"
+        fields:
+          - { label: "Título da aba", name: "pageTitle", widget: "string" }
+          - { label: "Título da página", name: "title", widget: "string" }
