@@ -20,7 +20,7 @@ const BagButton = ({ openCart }) => {
   const classes = classStyles();
 
   return (
-    <Fab size="small" aria-label="Carrinho" className={classes.fab} color="secondary" onClick={openCart}>
+    <Fab aria-label="Carrinho" className={classes.fab} color="secondary" onClick={openCart}>
       <BagIcon />
     </Fab>
   );
