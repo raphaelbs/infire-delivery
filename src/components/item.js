@@ -8,6 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import makeStyles from "@material-ui/styles/makeStyles";
 
 import Infire from './infire';
@@ -22,16 +23,19 @@ const imageStyles = makeStyles(theme => ({
 
 const cardStyles = makeStyles(theme => ({
   root: {
-    margin: "0 auto",
-    maxWidth: 400,
+    marginBottom: theme.spacing(2),
   },
 }));
 
 const styles = makeStyles(theme => ({
-  typography: {
+  price: {
     lineHeight: 3,
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
+  },
+  description: {
+    width: 256,
+    height: 64,
   }
 }));
 
@@ -41,7 +45,7 @@ const Item = ({ id, title, image, price, description }) => {
   const classes = styles();
 
   return (
-    <Box m={1} flex={1}>
+    <Grid item container xs sm={6} md={4} alignItems="center" direction="column">
       <Card classes={cardClass}>
         <CardHeader title={title} />
         <CardMedia classes={imageClass}>
@@ -53,20 +57,20 @@ const Item = ({ id, title, image, price, description }) => {
           />
         </CardMedia>
         <CardContent>
-          <Typography variant="body1" color="textSecondary" component="p">
+          <Typography className={classes.description} variant="body1" color="textSecondary" component="p">
             <Infire text={description} />
           </Typography>
         </CardContent>
         <CardActions>
           <Box display="flex" justifyContent="space-between" width="100%">
             <ItemCount itemId={id} />
-            <Typography color="secondary" variant="h6" className={classes.typography}>
+            <Typography color="secondary" variant="h6" className={classes.price}>
               {displayPrice(price)}
             </Typography>
           </Box>
         </CardActions>
       </Card>
-    </Box>
+    </Grid>
   );
 };
 

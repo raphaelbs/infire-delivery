@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 
 import Item from "../components/item";
 
@@ -16,13 +16,13 @@ const Cardapio = () => {
   .map((edge) => ({ id: edge.node.id, ...edge.node.frontmatter }));
 
   return (
-    <Box component="section" display="flex" flexWrap="wrap">
+    <Grid container>
       {
         cardapio
         .sort(sortByOrder)
         .map(item => (<Item {...item} key={item.id} />))
       }
-    </Box>
+    </Grid>
   )
 };
 
