@@ -32,3 +32,12 @@ collections:
         fields:
           - { label: "Título da aba", name: "pageTitle", widget: "string" }
           - { label: "Título da página", name: "title", widget: "string" }
+      - file: "_docs/paginas/carrinho.md"
+        label: "Carrinho"
+        name: "cart"
+        fields:
+          - { label: "Cabeçalho", name: "title", widget: "string" }
+          - { label: "Carrinho vazio - título", name: "emptyMsgTitle", widget: "string" }
+          - { label: "Carrinho vazio - subtítulo", name: "emptyMsgSubtitle", widget: "string" }
+          - { label: "Botão Pedir", name: "pedirBtn", widget: "string" }
+          - { label: "Botão Limpar", name: "limparBtn", widget: "string" }

@@ -32,9 +32,11 @@ const dialogTitleStyles = makeStyles(theme => ({
 const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const dialogTitleClass = dialogTitleStyles();
-  const data = useStaticQuery(cardapioGQL);
+  const data = useStaticQuery(graphQl);
 
-  const cardapio = data.allMarkdownRemark.edges
+  const { title, pedirBtn, limparBtn } = data.pageData.edges[0].node.frontmatter;
+
+  const cardapio = data.produtos.edges
   .reduce((edges, edge) => ({ ...edges, [edge.node.id]: edge.node.frontmatter }), {});
 
   const filteredBag = Object.entries(bag).filter(([, qtd]) => qtd > 0);
@@ -59,7 +61,7 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
     <Dialog fullScreen={fullScreen} open={open}>
       <DialogTitle disableTypography classes={dialogTitleClass}>
         <Box width="100%" display="flex" justifyContent="space-between">
-          <Typography variant="h6">Finalize seu pedido</Typography>
+          <Typography variant="h6">{title}</Typography>
           <IconButton size="small" edge="end" aria-label="close" onClick={onClose}>
             <CloseIcon />
           </IconButton>
@@ -68,7 +70,7 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
       <CartContent selectedItems={selectedItems} total={total} />
       <DialogActions>
         <Button disabled={!total} onClick={onClearBag} color="secondary" variant="outlined">
-          Limpar sacola
+          {limparBtn}
         </Button>
         <Button
           disableElevation
@@ -77,7 +79,7 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
           color="primary"
           variant="contained"
           endIcon={<OpenInNewIcon fontSize="small" />}
-        >Pedir!</Button>
+        >{pedirBtn}</Button>
       </DialogActions>
     </Dialog>
   )
@@ -95,9 +97,9 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps)
 )(Cart);
 
-const cardapioGQL = graphql`
+const graphQl = graphql`
 query {
-  allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/produto/.*\\\\.md$/"}}) {
+  produtos: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/produto/.*\\\\.md$/"}}) {
     edges {
       node {
         id
@@ -121,4 +123,16 @@ query {
       }
     }
   }
+  pageData: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/carrinho\\\\.md$/"}}) {
+    edges {
+      node {
+        frontmatter {
+          title
+          pedirBtn
+          limparBtn
+        }
+      }
+    }
+  }
 }`;
+
