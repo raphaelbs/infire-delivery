@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import withTheme from "@material-ui/styles/withTheme";
 
 import Header from "./header";
+import { MAX_WIDTH } from "../constants";
 
 const Layout = ({ children, subtitle }) => {
   const data = useStaticQuery(siteMetadata);
@@ -16,7 +17,7 @@ const Layout = ({ children, subtitle }) => {
       <div
         style={{
           margin: `0 auto`,
-          maxWidth: 960,
+          maxWidth: MAX_WIDTH,
           padding: `0px 1rem 1rem`,
           paddingTop: 0,
         }}
