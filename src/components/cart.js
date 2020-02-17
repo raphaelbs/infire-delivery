@@ -34,7 +34,7 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
   const dialogTitleClass = dialogTitleStyles();
   const data = useStaticQuery(graphQl);
 
-  const { title, pedirBtn, limparBtn } = data.pageData.edges[0].node.frontmatter;
+  const { title, pedirBtn, limparBtn, freteMsg } = data.pageData.edges[0].node.frontmatter;
 
   const cardapio = data.produtos.edges
   .reduce((edges, edge) => ({ ...edges, [edge.node.id]: edge.node.frontmatter }), {});
@@ -67,7 +67,7 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
           </IconButton>
         </Box>
       </DialogTitle>
-      <CartContent selectedItems={selectedItems} total={total} />
+      <CartContent selectedItems={selectedItems} total={total} freteMsg={freteMsg} />
       <DialogActions>
         <Button disabled={!total} onClick={onClearBag} color="secondary" variant="outlined">
           {limparBtn}
@@ -128,6 +128,7 @@ query {
       node {
         frontmatter {
           title
+          freteMsg
           pedirBtn
           limparBtn
         }
