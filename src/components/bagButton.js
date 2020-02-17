@@ -7,12 +7,16 @@ import Fab from "@material-ui/core/Fab";
 
 import BagIcon from './bagIcon';
 import { setBagVisibilityAction } from "../effects/setBagVisibility.effect";
+import { MAX_WIDTH } from "../constants";
 
 const classStyles = makeStyles(theme => ({
   fab: {
     position: 'fixed',
     bottom: theme.spacing(2),
-    right: theme.spacing(2),
+    right: `calc((100% - ${MAX_WIDTH}px)/2)`,
+    [theme.breakpoints.down('md')]: {
+      right: theme.spacing(2),
+    },
   },
 }));
 
