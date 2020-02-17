@@ -1,8 +1,11 @@
 ---
-title: Finalize seu pedido
+title: Carrinho
 emptyMsgTitle: Seu carrinho está vazio
 emptyMsgSubtitle: A brasa está aguardando o seu pedido!
-pedirBtn: Pedir!
-limparBtn: Limpar sacola
+freteMsg: Consulte o frete na próxima etapa
+step1: Revisar pedido
+step2: Pedir via Whatsapp
+pedirBtn: Continuar no Zap
+limparBtn: Limpar
 ---
 

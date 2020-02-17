@@ -39,5 +39,8 @@ collections:
           - { label: "Cabeçalho", name: "title", widget: "string" }
           - { label: "Carrinho vazio - título", name: "emptyMsgTitle", widget: "string" }
           - { label: "Carrinho vazio - subtítulo", name: "emptyMsgSubtitle", widget: "string" }
+          - { label: "Frete", name: "freteMsg", widget: "string" }
+          - { label: "Passo 1", name: "step1", widget: "string" }
+          - { label: "Passo 2", name: "step2", widget: "string" }
           - { label: "Botão Pedir", name: "pedirBtn", widget: "string" }
           - { label: "Botão Limpar", name: "limparBtn", widget: "string" }
