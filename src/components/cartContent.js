@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import GatsbyImage from 'gatsby-image';
 
+import makeStyles from '@material-ui/styles/makeStyles';
 import DialogContent from '@material-ui/core/DialogContent';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -12,7 +13,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 import { displayPrice } from '../constants';
 import EmptyCart from './emptyCart';
-import { makeStyles } from '@material-ui/styles';
+import CartSteps from './cartSteps';
 
 const dialogContentStyle = { padding: 0 };
 const listItemStyle = makeStyles(theme => ({
@@ -21,7 +22,7 @@ const listItemStyle = makeStyles(theme => ({
   }
 }));
 
-const CartContent = ({ selectedItems, total }) => {
+const CartContent = ({ selectedItems, total, freteMsg }) => {
   const listClass = listItemStyle();
 
   const list = (
@@ -51,10 +52,22 @@ const CartContent = ({ selectedItems, total }) => {
           <Typography>{displayPrice(total)}</Typography>
         </ListItemSecondaryAction>
       </ListItem>
+      <Divider />
+      <ListItem key="frete">
+        <ListItemText primary={freteMsg} />
+      </ListItem>
     </List>
   );
 
-  const content = selectedItems.length ? list : <EmptyCart />;
+  const cartContent = (
+    <Fragment>
+      <CartSteps />
+      <Divider />
+      {list}
+    </Fragment>
+  );
+
+  const content = selectedItems.length ? cartContent : <EmptyCart />;
 
   return (
     <DialogContent style={dialogContentStyle} dividers>
