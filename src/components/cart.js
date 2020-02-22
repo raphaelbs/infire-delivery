@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { useStaticQuery } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
 import withTheme from '@material-ui/styles/withTheme';
