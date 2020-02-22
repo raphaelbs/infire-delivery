@@ -1,13 +1,10 @@
 import PropTypes from "prop-types";
 import React, { memo } from "react";
 
-import InfoIcon from "@material-ui/icons/Info";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Box from "@material-ui/core/Box";
-import { Typography } from "@material-ui/core";
 
-import Social from "./social";
 import LogoImg from "./logoImg";
 import { MAX_WIDTH } from "../constants";
 
