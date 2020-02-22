@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import React, { memo } from "react";
 
+import InfoIcon from "@material-ui/icons/Info";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Box from "@material-ui/core/Box";
+import { Typography } from "@material-ui/core";
 
 import Social from "./social";
 import LogoImg from "./logoImg";
@@ -13,13 +15,8 @@ const Header = ({ siteTitle }) => (
   <AppBar position="sticky">
     <Toolbar variant="regular">
       <Box display="flex" width="100%" justifyContent="center">
-        <Box display="flex" width="100%" maxWidth={MAX_WIDTH}>
-          <Box flexGrow={1} display="flex" alignItems="center">
-            <Box display="flex" flexDirection="column">
-              <LogoImg alt={siteTitle} />
-            </Box>
-          </Box>
-          <Social />
+        <Box display="flex" width="100%" justifyContent="space-between" maxWidth={MAX_WIDTH}>
+          <LogoImg alt={siteTitle} />
         </Box>
       </Box>
     </Toolbar>
