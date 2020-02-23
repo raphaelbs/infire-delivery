@@ -22,14 +22,10 @@ const generateTextShadow = (baseColor, divisor = 1) => textShadowSpacing
 const generateKeyFrames = (baseColor) => ({
   from: {
     color: baseColor.rgb().toString(),
-    borderColor: baseColor.rgb().toString(),
-    borderRadius: 12,
     textShadow: generateTextShadow(baseColor),
   },
   to: {
     color: baseColor.lighten(0.1).rgb().toString(),
-    borderColor: baseColor.lighten(0.1).rgb().toString(),
-    borderRadius: 13,
     textShadow: generateTextShadow(baseColor, 2),
   },
 });
@@ -37,10 +33,19 @@ const generateKeyFrames = (baseColor) => ({
 const animationGreen = '$neonGreen 1.5s ease-in-out infinite alternate';
 const animationRed = '$neonRed 2s ease-in-out infinite alternate';
 
+const commonStyles = {
+  '-webkit-transform': 'translateZ(0)',
+  '-moz-transform': 'translateZ(0)',
+  '-ms-transform': 'translateZ(0)',
+  '-o-transform': 'translateZ(0)',
+  transform: 'translateZ(0)',
+};
+
 const chipStyles = makeStyles(theme => ({
   '@keyframes neonGreen': generateKeyFrames(greenColor),
   '@keyframes neonRed': generateKeyFrames(Color('#fd0505')),
   colorPrimary: {
+    ...commonStyles,
     padding: theme.spacing(0.6),
     borderWidth: 1,
     borderStyle: 'solid',
@@ -50,6 +55,7 @@ const chipStyles = makeStyles(theme => ({
     animation: animationGreen,
   },
   colorSecondary: {
+    ...commonStyles,
     padding: theme.spacing(0.6),
     '-webkit-animation': animationRed,
     '-moz-animation': animationRed,
