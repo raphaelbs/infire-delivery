@@ -50,16 +50,10 @@ const chipStyles = makeStyles(theme => ({
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: greenColor.rgb().toString(),
-    '-webkit-animation': animationGreen,
-    '-moz-animation': animationGreen,
-    animation: animationGreen,
   },
   colorSecondary: {
     ...commonStyles,
     padding: theme.spacing(0.6),
-    '-webkit-animation': animationRed,
-    '-moz-animation': animationRed,
-    animation: animationRed,
   },
 }));
 
