@@ -12,12 +12,12 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import makeStyles from '@material-ui/styles/makeStyles';
 
+import Typography from './Typography';
 import { clearBagAction } from '../effects/clearBag.effect';
 import { setBagVisibilityAction } from '../effects/setBagVisibility.effect';
 import CartContent from './cartContent';

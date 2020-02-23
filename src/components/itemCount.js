@@ -6,9 +6,9 @@ import Remove from '@material-ui/icons/Remove';
 import makeStyles from '@material-ui/styles/makeStyles';
 
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+import Typography from './Typography';
 import { updateBagAction } from '../effects/updateBag.effect';
 import { updateBagCountAction } from '../effects/updateBagCount.effect';
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
 import ShoppingCartOutlined from '@material-ui/icons/ShoppingCartOutlined';
+
+import Typography from './Typography';
 
 const EmptyCart = () => {
   const data = useStaticQuery(graphQl);

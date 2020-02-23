@@ -2,11 +2,11 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import makeStyles from '@material-ui/styles/makeStyles';
 
 import { MAX_WIDTH } from '../constants';
 import Social from './social';
+import Typography from './Typography';
 
 const styles = makeStyles(theme => ({
   footer: {

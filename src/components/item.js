@@ -5,13 +5,12 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import makeStyles from "@material-ui/styles/makeStyles";
 
-import Infire from './infire';
+import Typography from './Typography';
 import { displayPrice } from "../constants";
 import ItemCount from "./itemCount";
 
@@ -58,7 +57,7 @@ const Item = ({ id, title, image, price, description }) => {
         </CardMedia>
         <CardContent>
           <Typography className={classes.description} variant="body1" color="textSecondary" component="p">
-            <Infire text={description} />
+            {description}
           </Typography>
         </CardContent>
         <CardActions>

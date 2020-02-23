@@ -3,7 +3,6 @@ import GatsbyImage from 'gatsby-image';
 
 import makeStyles from '@material-ui/styles/makeStyles';
 import DialogContent from '@material-ui/core/DialogContent';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -11,6 +10,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
+import Typography from './Typography';
 import { displayPrice } from '../constants';
 import EmptyCart from './emptyCart';
 import CartSteps from './cartSteps';
