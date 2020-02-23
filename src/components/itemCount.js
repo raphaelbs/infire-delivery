@@ -8,6 +8,7 @@ import makeStyles from '@material-ui/styles/makeStyles';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 
+import useIsOpen from './useIsOpen';
 import Typography from './Typography';
 import { updateBagAction } from '../effects/updateBag.effect';
 import { updateBagCountAction } from '../effects/updateBagCount.effect';
@@ -28,8 +29,19 @@ const itemCountStyles = makeStyles(theme => ({
 }));
 
 const ItemCount = ({ itemId, updateBag, updateBagCount, bagCount }) => {
+  const [isOpen] = useIsOpen();
   const classes = itemCountStyles();
   const [qtd, setQtd] = useState(0);
+
+  useEffect(() => {
+    if (bagCount === 0) {
+      setQtd(0);
+    }
+  }, [bagCount]);
+
+  if (!isOpen) {
+    return <span></span>;
+  }
 
   const onClick = (operation) => () => {
     const newQtd = Math.max(0, qtd + operation);
@@ -39,12 +51,6 @@ const ItemCount = ({ itemId, updateBag, updateBagCount, bagCount }) => {
       updateBagCount(operation);
     }
   }
-
-  useEffect(() => {
-    if (bagCount === 0) {
-      setQtd(0);
-    }
-  }, [bagCount])
   
   return (
     <fieldset className={classes.fieldset}>

@@ -7,6 +7,7 @@ import Box from "@material-ui/core/Box";
 
 import LogoImg from "./logoImg";
 import BagButton from "./bagButton";
+import Status from "./status";
 import { MAX_WIDTH } from "../constants";
 
 const Header = ({ siteTitle }) => (
@@ -15,6 +16,7 @@ const Header = ({ siteTitle }) => (
       <Box display="flex" width="100%" justifyContent="center">
         <Box display="flex" width="100%" justifyContent="space-between" maxWidth={MAX_WIDTH}>
           <LogoImg alt={siteTitle} />
+          <Status />
         </Box>
       </Box>
     </Toolbar>

@@ -26,6 +26,19 @@ collections:
           - { label: "Descrição", name: "description", widget: "string" }
           - { label: "Imagem", name: "image", widget: "image" }
           - { label: "Palavras-Chave", name: "keywords", widget: "list" }
+      - file: "_docs/configs/status.md"
+        label: "Horários"
+        name: "status"
+        fields:
+          - { label: "Início", name: "startHour", widget: "select", options: ["15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30"] }
+          - { label: "Término", name: "endHour", widget: "select", options: ["15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30"] }
+          - { label: "Segunda", name: "monday", widget: "boolean" }
+          - { label: "Terça", name: "tuesday", widget: "boolean" }
+          - { label: "Quarta", name: "wednesday", widget: "boolean" }
+          - { label: "Quinta", name: "thrusday", widget: "boolean" }
+          - { label: "Sexta", name: "friday", widget: "boolean" }
+          - { label: "Sábado", name: "saturday", widget: "boolean" }
+          - { label: "Domingo", name: "sunday", widget: "boolean" }
       - file: "_docs/paginas/home.md"
         label: "Home"
         name: "home"
