@@ -8,6 +8,7 @@ import Typography from './Typography';
 import useIsOpen from './useIsOpen';
 
 const greenColor = Color('#17ff1e');
+const redColor = Color('#fd0505');
 
 const textShadowSpacing = [10, 20, 30, 40, 70, 80, 100, 150];
 const maxValue = Math.max(...textShadowSpacing);
@@ -19,51 +20,23 @@ const generateTextShadow = (baseColor, divisor = 1) => textShadowSpacing
   .map(([spacing, color]) => `0 0 ${spacing}px ${color}`)
   .join(',');
 
-const generateKeyFrames = (baseColor) => ({
-  from: {
-    color: baseColor.rgb().toString(),
-    textShadow: generateTextShadow(baseColor),
-  },
-  to: {
-    color: baseColor.lighten(0.1).rgb().toString(),
-    textShadow: generateTextShadow(baseColor, 2),
-  },
-});
-
-const animationGreen = '$neonGreen 1.5s ease-in-out infinite alternate';
-const animationRed = '$neonRed 2s ease-in-out infinite alternate';
-
-const commonStyles = {
-  '-webkit-transform': 'translateZ(0)',
-  '-moz-transform': 'translateZ(0)',
-  '-ms-transform': 'translateZ(0)',
-  '-o-transform': 'translateZ(0)',
-  transform: 'translateZ(0)',
-};
-
-const keyframes = {
-  '@keyframes neonGreen': generateKeyFrames(greenColor),
-  '@keyframes neonRed': generateKeyFrames(Color('#fd0505')),
-};
+const textShadowGreen = generateTextShadow(greenColor);
+const textShadowRed = generateTextShadow(redColor);
 
 const chipStyles = makeStyles(theme => ({
-  ...keyframes,
   colorPrimary: {
-    ...commonStyles,
     padding: theme.spacing(0.6),
+    color: greenColor.rgb().toString(),
     borderWidth: 1,
+    borderRadius: 12,
     borderStyle: 'solid',
     borderColor: greenColor.rgb().toString(),
-    '-webkit-animation': animationGreen,
-    '-moz-animation': animationGreen,
-    animation: animationGreen,
+    textShadow: textShadowGreen,
   },
   colorSecondary: {
-    ...commonStyles,
+    color: redColor.rgb().toString(),
     padding: theme.spacing(0.6),
-    '-webkit-animation': animationRed,
-    '-moz-animation': animationRed,
-    animation: animationRed,
+    textShadow: textShadowRed,
   },
 }));
 
