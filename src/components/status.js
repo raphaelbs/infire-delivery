@@ -41,19 +41,29 @@ const commonStyles = {
   transform: 'translateZ(0)',
 };
 
-const chipStyles = makeStyles(theme => ({
+const keyframes = {
   '@keyframes neonGreen': generateKeyFrames(greenColor),
   '@keyframes neonRed': generateKeyFrames(Color('#fd0505')),
+};
+
+const chipStyles = makeStyles(theme => ({
+  ...keyframes,
   colorPrimary: {
     ...commonStyles,
     padding: theme.spacing(0.6),
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: greenColor.rgb().toString(),
+    '-webkit-animation': animationGreen,
+    '-moz-animation': animationGreen,
+    animation: animationGreen,
   },
   colorSecondary: {
     ...commonStyles,
     padding: theme.spacing(0.6),
+    '-webkit-animation': animationRed,
+    '-moz-animation': animationRed,
+    animation: animationRed,
   },
 }));
 
