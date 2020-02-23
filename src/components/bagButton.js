@@ -5,12 +5,13 @@ import makeStyles from "@material-ui/styles/makeStyles";
 
 import Fab from "@material-ui/core/Fab";
 
+import useIsOpen from './useIsOpen';
 import BagIcon from './bagIcon';
 import { setBagVisibilityAction } from "../effects/setBagVisibility.effect";
 import { MAX_WIDTH } from "../constants";
 
 const classStyles = makeStyles(theme => ({
-  fab: {
+  root: {
     position: 'fixed',
     top: 60,
     right: `calc((100% - ${MAX_WIDTH}px)/2)`,
@@ -18,13 +19,17 @@ const classStyles = makeStyles(theme => ({
       right: theme.spacing(2),
     },
   },
+  disabled: {
+    backgroundColor: `${theme.palette.primary.main} !important`,
+  },
 }));
 
 const BagButton = ({ openCart }) => {
+  const [isOpen] = useIsOpen();
   const classes = classStyles();
 
   return (
-    <Fab aria-label="Carrinho" className={classes.fab} color="secondary" onClick={openCart}>
+    <Fab aria-label="Carrinho" disabled={!isOpen} classes={classes} onClick={openCart} color="secondary">
       <BagIcon />
     </Fab>
   );
