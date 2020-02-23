@@ -6,6 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Box from "@material-ui/core/Box";
 
 import LogoImg from "./logoImg";
+import BagButton from "./bagButton";
 import { MAX_WIDTH } from "../constants";
 
 const Header = ({ siteTitle }) => (
@@ -17,6 +18,7 @@ const Header = ({ siteTitle }) => (
         </Box>
       </Box>
     </Toolbar>
+    <BagButton />
   </AppBar>
 );
 
