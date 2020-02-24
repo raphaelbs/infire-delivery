@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title, image }) {
   const data = useStaticQuery(seoMetadata);
   const seo = data.allMarkdownRemark.edges[0].node.frontmatter;
 
   const metaDescription = description || seo.description;
+  const metaImage = image || seo.image.publicURL;
 
   return (
     <Helmet
@@ -39,7 +40,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: "og:image",
-          content: seo.image.publicURL,
+          content: metaImage,
         },
         {
           property: "og:image:width",
