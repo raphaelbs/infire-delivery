@@ -52,22 +52,24 @@ const Footer = () => {
             {footerData.aboutUsMsg}
           </Typography>
         </Grid>
-        <Grid className={classes.gridItem} item xs={12} sm={6} md={4}>
-          <Typography component="h2" variant="h6" gutterBottom>
-            {footerData.businessHoursTitle}
-          </Typography>
-          <Typography variant="body2">
-            {footerData.businessHoursMsg}
-          </Typography>
-        </Grid>
-        <Grid className={classes.gridItem} item xs={12} md={4}>
-          <Typography component="h2" variant="h6" gutterBottom>
-            {footerData.contactTitle}
-          </Typography>
-          <Typography variant="body2">
-            {footerData.contactMsg}
-          </Typography>
-          <Social />
+        <Grid item container xs={12} sm={6} md={8}>
+          <Grid className={classes.gridItem} item xs={12} md={6}>
+            <Typography component="h2" variant="h6" gutterBottom>
+              {footerData.businessHoursTitle}
+            </Typography>
+            <Typography variant="body2">
+              {footerData.businessHoursMsg}
+            </Typography>
+          </Grid>
+          <Grid className={classes.gridItem} item xs={12} md={6}>
+            <Typography component="h2" variant="h6" gutterBottom>
+              {footerData.contactTitle}
+            </Typography>
+            <Typography variant="body2">
+              {footerData.contactMsg}
+            </Typography>
+            <Social />
+          </Grid>
         </Grid>
       </Grid>
       <Grid className={classes.end} container justify="center">
