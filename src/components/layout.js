@@ -7,6 +7,7 @@ import withTheme from "@material-ui/styles/withTheme";
 import Header from "./header";
 import { MAX_WIDTH } from "../constants";
 import Footer from "./footer";
+import Cart from "./cart";
 
 const Layout = ({ children, subtitle }) => {
   const data = useStaticQuery(siteMetadata);
@@ -26,6 +27,7 @@ const Layout = ({ children, subtitle }) => {
         <main>{children}</main>
       </div>
       <Footer />
+      <Cart />
     </>
   );
 };

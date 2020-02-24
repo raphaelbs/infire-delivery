@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import Cart from "../components/cart";
 import Cardapio from "../components/cardapio";
 
 const IndexPage = () => {
@@ -20,7 +19,6 @@ const IndexPage = () => {
         <Typography variant="h4" component="h1" color="secondary">{title}</Typography>
       </Box>
       <Cardapio />
-      <Cart />
     </Layout>
   );
 }
