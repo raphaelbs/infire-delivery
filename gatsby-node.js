@@ -7,11 +7,10 @@ const { createFilePath } = require('gatsby-source-filesystem');
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  const { frontmatter } = node
+  const { frontmatter } = node;
   if (frontmatter) {
     const { image } = frontmatter
     if (image) {
@@ -32,4 +31,33 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     })
   }
+}
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
+
+  const result = await graphql(`
+    query {
+      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/produto/.*\\\\.md$/"}}) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve(`./src/templates/itemPage.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        slug: node.fields.slug,
+      },
+    })
+  })
 }
