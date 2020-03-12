@@ -38,14 +38,14 @@ query {
           description
           image {
             childImageSharp {
-              fluid(traceSVG: {
+              fixed(traceSVG: {
                 color: "#050505"
                 blackOnWhite: true
                 turdSize: 10
                 threshold: 250
                 optTolerance: 0.6
-              }) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }, height: 256) {
+                ...GatsbyImageSharpFixed_withWebp_tracedSVG
               }
             }
           }

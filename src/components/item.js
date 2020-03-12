@@ -15,6 +15,7 @@ import { displayPrice } from "../constants";
 import ItemCount from "./itemCount";
 
 const imageStyle = { width: 256, height: 256, margin: "0 auto" };
+const gatsbyImageStyle = { display: 'block', margin: '0 auto' };
 
 const imageStyles = makeStyles(theme => ({
   root: imageStyle,
@@ -48,12 +49,7 @@ const Item = ({ id, title, image, price, description }) => {
       <Card classes={cardClass}>
         <CardHeader title={title} />
         <CardMedia classes={imageClass}>
-          <GatsbyImage
-            width={256}
-            height={256}
-            fluid={image.childImageSharp.fluid}
-            loading="lazy"
-          />
+          <GatsbyImage style={gatsbyImageStyle} fixed={image.childImageSharp.fixed} loading="lazy" />
         </CardMedia>
         <CardContent>
           <Typography className={classes.description} variant="body1" color="textSecondary" component="p">
