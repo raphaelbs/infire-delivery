@@ -19,6 +19,7 @@ const EmptyCart = () => {
       justifyContent="center"
       textAlign="center"
       flexDirection="column"
+      p={3}
     >
       <div>
         <ShoppingCartOutlined fontSize="large" />
