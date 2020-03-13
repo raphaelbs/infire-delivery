@@ -1,11 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 
 const useIsOpen = () => {
   const data = useStaticQuery(statusMetadata);
   const [isOpen, setOpen] = useState(false);
   
-  useEffect(() => {
+  useLayoutEffect(() => {
     const statusData = data.status.edges[0].node.frontmatter;
   
     const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thrusday', 'friday', 'saturday']
