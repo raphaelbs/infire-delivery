@@ -22,6 +22,7 @@ import { clearBagAction } from '../effects/clearBag.effect';
 import { setBagVisibilityAction } from '../effects/setBagVisibility.effect';
 import CartContent from './cartContent';
 import { PEDIR_TEXT, WHATSAPP_URL } from '../constants';
+import { ecommerceAddItem, ecommerceFinalize } from '../utils/ga';
 
 const dialogTitleStyles = makeStyles(theme => ({
   root: {
@@ -45,15 +46,22 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
 
   const pedirUrl = WHATSAPP_URL + "?text=" + PEDIR_TEXT(selectedItems);
   const onPedir = () => {
-    selectedItems.map(({ title, price, qtd }) => 
-      Array(qtd).fill(1).forEach(() => 
+    selectedItems.map(({ title, price, qtd, id }) => {
+      ecommerceAddItem({
+        id,
+        name: title,
+        price,
+        quantity: qtd,
+      });
+      Array(qtd).fill(1).forEach(() =>
         trackCustomEvent({
           category: 'item',
           action: title,
           value: parseInt(price * 100, 10),
         })
-      )
-    );
+      );
+    });
+    ecommerceFinalize();
     window.open(pedirUrl, "_blank");
   };
 

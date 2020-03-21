@@ -1,5 +1,7 @@
 const trackCustomEvent = require('gatsby-plugin-google-analytics');
 
+const { initializeEcommerce } = require('./src/utils/ga');
+
 /**
  * Implement Gatsby's Browser APIs in this file.
  *
@@ -9,6 +11,7 @@ const trackCustomEvent = require('gatsby-plugin-google-analytics');
 // You can delete this file if you're not using it
 exports.onClientEntry = () => {
   window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
     e.userChoice.then(choiceResult => {
       trackCustomEvent({
         category: 'add-to-homescreen',
@@ -17,4 +20,6 @@ exports.onClientEntry = () => {
       })
     });
   });
+
+  initializeEcommerce();
 }
