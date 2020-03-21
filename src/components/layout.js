@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import withTheme from "@material-ui/styles/withTheme";
 
+import ErrorBoundary from "./ErrorBoundary";
 import Header from "./header";
 import { MAX_WIDTH } from "../constants";
 import Footer from "./footer";
@@ -14,7 +15,7 @@ const Layout = ({ children, subtitle }) => {
   const seo = data.pageData.edges[0].node.frontmatter;
 
   return (
-    <>
+    <ErrorBoundary>
       <Header siteTitle={seo.title} subtitle={subtitle} />
       <div
         style={{
@@ -28,7 +29,7 @@ const Layout = ({ children, subtitle }) => {
       </div>
       <Footer />
       <Cart />
-    </>
+    </ErrorBoundary>
   );
 };
 
