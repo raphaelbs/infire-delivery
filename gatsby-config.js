@@ -138,6 +138,15 @@ module.exports = {
         windowKey: '__PRELOADED_STATE__',
       },
     },
+    {
+      resolve: "gatsby-plugin-sentry",
+      options: {
+        dsn: "https://7fd6de81b2484ea18e6392ddd131ddb4@sentry.io/5170131",
+        // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
+        environment: process.env.NODE_ENV,
+        enabled: (() => ["production"].indexOf(process.env.NODE_ENV) !== -1)()
+      }
+    },
     `gatsby-plugin-preact`,
     `gatsby-plugin-sitemap`,
     // If you want to use styled components you should add the plugin here.
