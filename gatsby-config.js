@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { CaptureConsole } = require('@sentry/integrations');
 
 module.exports = {
   siteMetadata: {
@@ -146,6 +147,11 @@ module.exports = {
         environment: process.env.NODE_ENV,
         enabled: (() => ["production"].indexOf(process.env.NODE_ENV) !== -1)(),
         release: `infire@${process.env.BUILD_ID}`,
+        integrations: [
+          new CaptureConsole({
+            levels: ['error']
+          })
+        ],
       }
     },
     `gatsby-plugin-preact`,
