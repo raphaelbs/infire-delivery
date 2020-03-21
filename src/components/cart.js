@@ -46,7 +46,7 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
 
   const pedirUrl = WHATSAPP_URL + "?text=" + PEDIR_TEXT(selectedItems);
   const onPedir = () => {
-    selectedItems.map(({ title, price, qtd, id }) => {
+    selectedItems.forEach(({ title, price, qtd, id }) => {
       ecommerceAddItem({
         id,
         name: title,
