@@ -144,7 +144,8 @@ module.exports = {
         dsn: "https://7fd6de81b2484ea18e6392ddd131ddb4@sentry.io/5170131",
         // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
         environment: process.env.NODE_ENV,
-        enabled: (() => ["production"].indexOf(process.env.NODE_ENV) !== -1)()
+        enabled: (() => ["production"].indexOf(process.env.NODE_ENV) !== -1)(),
+        release: `infire@${process.env.BUILD_ID}`,
       }
     },
     `gatsby-plugin-preact`,
