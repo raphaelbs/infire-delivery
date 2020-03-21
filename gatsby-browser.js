@@ -1,4 +1,6 @@
 const trackCustomEvent = require('gatsby-plugin-google-analytics');
+const Sentry = require('@sentry/browser');
+const { CaptureConsole } = require('@sentry/integrations');
 
 const { initializeEcommerce } = require('./src/utils/ga');
 
@@ -10,6 +12,20 @@ const { initializeEcommerce } = require('./src/utils/ga');
 
 // You can delete this file if you're not using it
 exports.onClientEntry = () => {
+  debugger;
+  Sentry.init({
+    dsn: "https://7fd6de81b2484ea18e6392ddd131ddb4@sentry.io/5170131",
+    // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
+    environment: process.env.NODE_ENV,
+    enabled: (() => ["production"].indexOf(process.env.NODE_ENV) !== -1)(),
+    release: `infire@${process.env.BUILD_ID}`,
+    integrations: [
+      new CaptureConsole({
+        levels: ['error'],
+      })
+    ],
+  });
+
   window.addEventListener('beforeinstallprompt', e => {
     e.preventDefault();
     e.userChoice.then(choiceResult => {
