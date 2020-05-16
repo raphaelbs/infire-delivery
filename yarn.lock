@@ -7072,6 +7072,11 @@ gatsby-link@^2.2.27:
     "@types/reach__router" "^1.2.6"
     prop-types "^15.7.2"
 
+gatsby-material-ui-components@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-material-ui-components/-/gatsby-material-ui-components-1.0.0.tgz#06015ab449de4501ae4f65225ecf9a45283910d3"
+  integrity sha512-/Wa5S6+hL3u3aAoq7qlh/WhQYkgkEcuXr4uCjY55RFNlz5Q1fvx8vOvdRNf8lSzt5t8RmhkguHlJKGa3SXw3kQ==
+
 gatsby-page-utils@^0.0.35:
   version "0.0.35"
   resolved "https://registry.yarnpkg.com/gatsby-page-utils/-/gatsby-page-utils-0.0.35.tgz#80ec1aea3078465be50d24b3fdfe9268238c100a"
@@ -7330,11 +7335,12 @@ gatsby-theme-material-ui-top-layout@^1.0.2:
   dependencies:
     gatsby-plugin-react-helmet "^3.1.2"
 
-gatsby-theme-material-ui@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-material-ui/-/gatsby-theme-material-ui-1.0.6.tgz#ab0a937a4dc9eb9315e1b941a903eab6e593b396"
-  integrity sha512-Lv9l0CY1CsW+M52dpGLSIP1o2MHQqgUUFrzLzNlOVe8dGCdxm28mIF3HV4N0a7v0ulQy/HiXSiE2IvFzljAPEg==
+gatsby-theme-material-ui@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-material-ui/-/gatsby-theme-material-ui-1.0.9.tgz#b5b64bc78e44d23bf9ddbf1617be84d1155fec36"
+  integrity sha512-kjlZtm32frzvdkHvga3BSrjecCj+FooGsg2pr7RgFlZr/yu0YveHiy/B2/joGe2O21x10/62cGg5ajYY/k5NEA==
   dependencies:
+    gatsby-material-ui-components "^1.0.0"
     gatsby-plugin-compile-es6-packages "^2.1.0"
     gatsby-plugin-material-ui "^2.1.4"
     gatsby-plugin-webfonts "^1.1.2"
