@@ -41,9 +41,7 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
     "eslint-plugin-graphql": "^3.1.1",
-    "firebase-tools": "^7.12.1",
     "prettier": "^2.0.5",
     "prettier-eslint": "^9.0.1"
   },
@@ -53,7 +51,6 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "deploy:local": "rm -rf public && yarn build && yarn firebase:deploy",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
