@@ -1,17 +1,18 @@
-import React from "react";
-import { graphql } from "gatsby";
-import GatsbyImage from "gatsby-image";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+import GatsbyImage from 'gatsby-image';
 
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Typography from "../components/Typography";
-import ItemCount from "../components/itemCount";
-import { displayPrice } from "../constants";
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import Typography from '../components/Typography';
+import ItemCount from '../components/itemCount';
+import { displayPrice } from '../constants';
 
-export default ({ data }) => {
+const ItemPage = ({ data }) => {
   const { id, title, image, description, price } = data.markdownRemark.frontmatter;
   const fluid = image.childImageSharp.fluid;
   return (
@@ -50,6 +51,11 @@ export default ({ data }) => {
     </Layout>
   );
 };
+ItemPage.propTypes = {
+  data: PropTypes.object,
+};
+
+export default ItemPage;
 
 export const query = graphql`
   query($slug: String!) {
@@ -76,4 +82,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

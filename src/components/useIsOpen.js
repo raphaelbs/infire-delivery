@@ -1,5 +1,5 @@
-import { graphql, useStaticQuery } from "gatsby";
-import { useState, useLayoutEffect } from "react";
+import { graphql, useStaticQuery } from 'gatsby';
+import { useState, useLayoutEffect } from 'react';
 
 const useIsOpen = () => {
   const data = useStaticQuery(statusMetadata);

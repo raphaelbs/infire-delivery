@@ -1,19 +1,19 @@
-import { createMuiTheme } from "@material-ui/core";
+import { createMuiTheme } from '@material-ui/core';
 
 const theme = createMuiTheme({
   palette: {
-    type: "dark",
+    type: 'dark',
     primary: {
-      main: "#050505",
+      main: '#050505',
     },
     secondary: {
-      main: "#FFCF9E",
+      main: '#FFCF9E',
     },
     contrastThreshold: 3,
     tonalOffset: 0.3,
   },
   typography: {
-    fontFamily: "Quattrocento Sans, Arial",
+    fontFamily: 'Quattrocento Sans, Arial',
   },
 });
 

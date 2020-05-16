@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import GatsbyImage from 'gatsby-image';
 
 import makeStyles from '@material-ui/styles/makeStyles';
@@ -29,11 +30,11 @@ const CartContent = ({ selectedItems, total, freteMsg }) => {
     <List>
       {selectedItems.map((item) => (
         <ListItem key={item.id}>
-            <ListItemAvatar>
-              <GatsbyImage
-                fixed={item.image.childImageSharp.fixed}
-                loading="lazy"
-              />
+          <ListItemAvatar>
+            <GatsbyImage
+              fixed={item.image.childImageSharp.fixed}
+              loading="lazy"
+            />
           </ListItemAvatar>
           <ListItemText
             classes={listClass}
@@ -73,7 +74,12 @@ const CartContent = ({ selectedItems, total, freteMsg }) => {
     <DialogContent style={dialogContentStyle} dividers>
       {content}
     </DialogContent>
-  )
+  );
+};
+CartContent.propTypes = {
+  selectedItems: PropTypes.array.isRequired,
+  total: PropTypes.number.isRequired,
+  freteMsg: PropTypes.string.isRequired,
 };
 
 export default CartContent;

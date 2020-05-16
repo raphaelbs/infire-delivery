@@ -1,6 +1,7 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
 const LogoImg = ({ alt }) => {
   const data = useStaticQuery(graphql`
@@ -19,6 +20,9 @@ const LogoImg = ({ alt }) => {
   `);
 
   return <Img alt={alt} fixed={data.file.childImageSharp.fixed} />;
+};
+LogoImg.propTypes = {
+  alt: PropTypes.string,
 };
 
 export default LogoImg;

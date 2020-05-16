@@ -1,8 +1,8 @@
-import React from "react";
-import Color from "color";
+import React from 'react';
+import Color from 'color';
 
-import Box from "@material-ui/core/Box";
-import makeStyles from "@material-ui/styles/makeStyles";
+import Box from '@material-ui/core/Box';
+import makeStyles from '@material-ui/styles/makeStyles';
 
 import Typography from './Typography';
 import useIsOpen from './useIsOpen';

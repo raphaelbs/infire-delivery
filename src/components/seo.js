@@ -1,7 +1,7 @@
-import React, { memo } from "react";
-import PropTypes from "prop-types";
-import Helmet from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
 
 function SEO({ description, lang, meta, title, image }) {
   const data = useStaticQuery(seoMetadata);
@@ -19,51 +19,51 @@ function SEO({ description, lang, meta, title, image }) {
       titleTemplate={`%s | ${seo.title}`}
       meta={[
         {
-          name: `description`,
+          name: 'description',
           content: metaDescription,
         },
         {
-          name: "keywords",
-          content: seo.keywords.join(","),
+          name: 'keywords',
+          content: seo.keywords.join(','),
         },
         {
-          property: `og:title`,
+          property: 'og:title',
           content: title,
         },
         {
-          property: `og:description`,
+          property: 'og:description',
           content: metaDescription,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          property: 'og:type',
+          content: 'website',
         },
         {
-          property: "og:image",
+          property: 'og:image',
           content: metaImage,
         },
         {
-          property: "og:image:width",
+          property: 'og:image:width',
           content: 512,
         },
         {
-          property: "og:image:height",
+          property: 'og:image:height',
           content: 512,
         },
         {
-          name: "twitter:card",
-          content: "summary_large_image",
+          name: 'twitter:card',
+          content: 'summary_large_image',
         },
         {
-          name: `twitter:creator`,
+          name: 'twitter:creator',
           content: seo.author,
         },
         {
-          name: `twitter:title`,
+          name: 'twitter:title',
           content: title,
         },
         {
-          name: `twitter:description`,
+          name: 'twitter:description',
           content: metaDescription,
         },
       ].concat(meta)}
@@ -72,9 +72,9 @@ function SEO({ description, lang, meta, title, image }) {
 }
 
 SEO.defaultProps = {
-  lang: `pt-br`,
+  lang: 'pt-br',
   meta: [],
-  description: ``,
+  description: '',
 };
 
 SEO.propTypes = {
@@ -82,6 +82,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+  image: PropTypes.string,
 };
 
 export default memo(SEO);

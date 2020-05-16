@@ -1,12 +1,12 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Cardapio from "../components/cardapio";
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import Cardapio from '../components/cardapio';
 
 const IndexPage = () => {
   const data = useStaticQuery(pageData);
@@ -21,7 +21,7 @@ const IndexPage = () => {
       <Cardapio />
     </Layout>
   );
-}
+};
 
 export default IndexPage;
 

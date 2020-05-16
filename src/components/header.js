@@ -1,15 +1,15 @@
-import PropTypes from "prop-types";
-import React, { memo } from "react";
-import { Link } from "gatsby";
+import PropTypes from 'prop-types';
+import React, { memo } from 'react';
+import { Link } from 'gatsby';
 
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Box from "@material-ui/core/Box";
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Box from '@material-ui/core/Box';
 
-import LogoImg from "./logoImg";
-import BagButton from "./bagButton";
-import Status from "./status";
-import { MAX_WIDTH } from "../constants";
+import LogoImg from './logoImg';
+import BagButton from './bagButton';
+import Status from './status';
+import { MAX_WIDTH } from '../constants';
 
 const Header = ({ siteTitle }) => (
   <AppBar position="sticky">
@@ -32,7 +32,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  siteTitle: ``,
+  siteTitle: '',
 };
 
 export default memo(Header);

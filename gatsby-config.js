@@ -1,57 +1,57 @@
-require("dotenv").config();
+require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: `InFire`,
-    description: `Levamos qualidade e diferencial em sua casa! Somos 🔥 IN FIRE 🔥. Delivery de lanches em Divinópolis.`,
-    author: `InFire`,
+    title: 'InFire',
+    description: 'Levamos qualidade e diferencial em sua casa! Somos 🔥 IN FIRE 🔥. Delivery de lanches em Divinópolis.',
+    author: 'InFire',
     keywords: [
-      "lanche",
-      "delivery",
-      "divinópolis",
-      "churrasco",
-      "sanduiche",
-      "batata",
+      'lanche',
+      'delivery',
+      'divinópolis',
+      'churrasco',
+      'sanduiche',
+      'batata',
     ],
-    siteUrl: `https://infire.delivery/`,
+    siteUrl: 'https://infire.delivery/',
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: "UA-158091113-1",
+        trackingId: 'UA-158091113-1',
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
+        name: 'images',
         path: `${__dirname}/static/images/uploads`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `produtos`,
+        name: 'produtos',
         path: `${__dirname}/_docs/produto`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `configs`,
+        name: 'configs',
         path: `${__dirname}/_docs/configs`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `paginas`,
+        name: 'paginas',
         path: `${__dirname}/_docs/paginas`,
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         // CommonMark mode (default: true)
         commonmark: true,
@@ -64,7 +64,7 @@ module.exports = {
         // Plugins configs
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
@@ -76,25 +76,25 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `InFire Delivery`,
-        short_name: `InFire`,
-        start_url: `/`,
-        background_color: `#303030`,
-        theme_color: `#050505`,
-        display: `minimal-ui`,
-        icon: `static/images/uploads/infire-logo.jpeg`,
+        name: 'InFire Delivery',
+        short_name: 'InFire',
+        start_url: '/',
+        background_color: '#303030',
+        theme_color: '#050505',
+        display: 'minimal-ui',
+        icon: 'static/images/uploads/infire-logo.jpeg',
       },
     },
     {
-      resolve: `gatsby-plugin-canonical-urls`,
+      resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: `https://infire.delivery/`,
+        siteUrl: 'https://infire.delivery/',
       },
     },
     {
-      resolve: `gatsby-theme-material-ui`,
+      resolve: 'gatsby-theme-material-ui',
       options: {
         stylesConfig: {
           disableAutoprefixing: true,
@@ -103,8 +103,8 @@ module.exports = {
           fonts: {
             google: [
               {
-                family: `Quattrocento Sans`,
-                variants: ["300", "400", "500"],
+                family: 'Quattrocento Sans',
+                variants: ['300', '400', '500'],
                 fontDisplay: 'swap',
               },
             ],
@@ -113,14 +113,14 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-netlify-cms`,
+      resolve: 'gatsby-plugin-netlify-cms',
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
         enableIdentityWidget: false,
       },
     },
     {
-      resolve: `gatsby-plugin-react-redux`,
+      resolve: 'gatsby-plugin-react-redux',
       options: {
         // [required] - path to your createStore module
         pathToCreateStoreModule: './src/createStore',
@@ -138,15 +138,15 @@ module.exports = {
         windowKey: '__PRELOADED_STATE__',
       },
     },
-    `gatsby-plugin-preact`,
-    `gatsby-plugin-sitemap`,
+    'gatsby-plugin-preact',
+    'gatsby-plugin-sitemap',
     // If you want to use styled components you should add the plugin here.
     // 'gatsby-plugin-styled-components',
-    `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    'gatsby-plugin-react-helmet',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
-    "gatsby-plugin-robots-txt",
+    'gatsby-plugin-offline',
+    'gatsby-plugin-robots-txt',
   ],
 };

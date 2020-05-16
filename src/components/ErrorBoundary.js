@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 import { configureScope, captureException } from '@sentry/browser';
 
 export default class ErrorBoundary extends React.Component {
@@ -15,3 +16,7 @@ export default class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.any,
+}; 

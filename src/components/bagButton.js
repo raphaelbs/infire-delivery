@@ -1,14 +1,15 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { connect } from 'react-redux';
 
-import makeStyles from "@material-ui/styles/makeStyles";
+import makeStyles from '@material-ui/styles/makeStyles';
 
-import Fab from "@material-ui/core/Fab";
+import Fab from '@material-ui/core/Fab';
 
 import useIsOpen from './useIsOpen';
 import BagIcon from './bagIcon';
-import { setBagVisibilityAction } from "../effects/setBagVisibility.effect";
-import { MAX_WIDTH } from "../constants";
+import { setBagVisibilityAction } from '../effects/setBagVisibility.effect';
+import { MAX_WIDTH } from '../constants';
 
 const classStyles = makeStyles(theme => ({
   root: {
@@ -33,10 +34,10 @@ const BagButton = ({ openCart }) => {
       <BagIcon />
     </Fab>
   );
-}
+};
 
 const mapDispatchToProps = (dispatch) => ({
   openCart: () => dispatch(setBagVisibilityAction(true)),
-})
+});
 
 export default connect(null, mapDispatchToProps)(BagButton);

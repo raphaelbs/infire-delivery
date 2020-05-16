@@ -1,9 +1,9 @@
-import React, { memo } from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import React, { memo } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import Grid from '@material-ui/core/Grid';
 
-import Item from "../components/item";
+import Item from '../components/item';
 
 const sortByOrder = (
   { order: order1 = Infinity },
@@ -13,17 +13,17 @@ const sortByOrder = (
 const Cardapio = () => {
   const data = useStaticQuery(cardapioGQL);
   const cardapio = data.allMarkdownRemark.edges
-  .map((edge) => ({ id: edge.node.id, ...edge.node.frontmatter }));
+    .map((edge) => ({ id: edge.node.id, ...edge.node.frontmatter }));
 
   return (
     <Grid container>
       {
         cardapio
-        .sort(sortByOrder)
-        .map(item => (<Item {...item} key={item.id} />))
+          .sort(sortByOrder)
+          .map(item => (<Item {...item} key={item.id} />))
       }
     </Grid>
-  )
+  );
 };
 
 export default memo(Cardapio);

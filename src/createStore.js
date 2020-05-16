@@ -12,16 +12,16 @@ const initialStore = {
 
 function reducer(state = initialStore, action) {
   switch (action.type) {
-    case UPDATE_BAG:
-      return handleUpdateBag(state, action);
-    case UPDATE_BAG_COUNT:
-      return handleUpdateBagCount(state, action);
-    case SET_BAG_VISIBILITY:
-      return handleSetBagVisibilityAction(state, action);
-    case CLEAR_BAG:
-      return handleClearBag(state, action);
-    default:
-      return state;
+  case UPDATE_BAG:
+    return handleUpdateBag(state, action);
+  case UPDATE_BAG_COUNT:
+    return handleUpdateBagCount(state, action);
+  case SET_BAG_VISIBILITY:
+    return handleSetBagVisibilityAction(state, action);
+  case CLEAR_BAG:
+    return handleClearBag(state, action);
+  default:
+    return state;
   }
 }
 
@@ -29,8 +29,10 @@ let reduxEnhancer = undefined;
 
 try {
   reduxEnhancer = process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-} catch (e) {}
+} catch (e) {
+  // redux is not activated in prod
+}
 
 export default preloadedState =>
   reduxEnhancer ? createStore(reducer, preloadedState, reduxEnhancer)
-  : createStore(reducer, preloadedState)
+    : createStore(reducer, preloadedState);

@@ -31,7 +31,7 @@ const CartSteps = () => {
         <StepLabel>{step2}</StepLabel>
       </Step>
     </Stepper>
-  )
+  );
 };
 
 export default CartSteps;
