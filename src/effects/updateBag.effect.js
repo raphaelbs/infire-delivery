@@ -1,4 +1,4 @@
-import { trackCustomEvent } from "gatsby-plugin-google-analytics";
+import { trackEvent } from '../tracking';
 
 export const UPDATE_BAG = 'UPDATE_BAG';
 
@@ -9,7 +9,7 @@ export const updateBagAction = (itemId, newQtd) => ({
 });
 
 export const handleUpdateBag = (state, { itemId, newQtd }) => {
-  trackCustomEvent({
+  trackEvent({
     category: 'redux',
     action: UPDATE_BAG,
     label: itemId,

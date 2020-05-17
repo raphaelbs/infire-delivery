@@ -1,4 +1,4 @@
-import { trackCustomEvent } from "gatsby-plugin-google-analytics";
+import { trackEvent } from '../tracking';
 
 export const CLEAR_BAG = 'CLEAR_BAG';
 
@@ -7,7 +7,7 @@ export const clearBagAction = () => ({
 });
 
 export const handleClearBag = (state) => {
-  trackCustomEvent({
+  trackEvent({
     category: 'redux',
     action: CLEAR_BAG,
   });
