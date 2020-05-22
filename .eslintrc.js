@@ -2,11 +2,12 @@ module.exports = {
   'env': {
     'browser': true,
     'es6': true,
-    'node': true
+    'node': true,
+    'cypress/globals': true,
   },
   'extends': [
     'eslint:recommended',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
   ],
   'globals': {
     'Atomics': 'readonly',
@@ -20,7 +21,8 @@ module.exports = {
     'sourceType': 'module'
   },
   'plugins': [
-    'react'
+    'react',
+    'cypress'
   ],
   'rules': {
     'indent': [
