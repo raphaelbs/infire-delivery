@@ -35,7 +35,7 @@
     "preact": "^10.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.0",
+    "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
     "react-redux": "^7.2.0",
     "react-social-icons": "^4.1.0",
