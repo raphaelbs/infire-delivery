@@ -1,5 +1,12 @@
 require('dotenv').config();
 
+const getAnalytics = () => process.env.CI ? [] : [{
+  resolve: 'gatsby-plugin-google-analytics',
+  options: {
+    trackingId: 'UA-158091113-1',
+  },
+}];
+
 module.exports = {
   siteMetadata: {
     title: 'InFire',
@@ -16,12 +23,7 @@ module.exports = {
     siteUrl: 'https://infire.delivery/',
   },
   plugins: [
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: 'UA-158091113-1',
-      },
-    },
+    ...getAnalytics(),
     {
       resolve: 'gatsby-source-filesystem',
       options: {

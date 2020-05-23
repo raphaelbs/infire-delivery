@@ -46,7 +46,7 @@ const Item = ({ id, title, image, price, description }) => {
   const classes = styles();
 
   return (
-    <Grid item container xs sm={6} md={4} alignItems="center" direction="column">
+    <Grid item container xs sm={6} md={4} alignItems="center" direction="column" data-testid="product">
       <Card classes={cardClass}>
         <CardHeader title={title} />
         <CardMedia classes={imageClass}>
