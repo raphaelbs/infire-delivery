@@ -38,7 +38,6 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
     "react-redux": "^7.2.0",
-    "react-social-icons": "^4.1.0",
     "redux": "^4.0.5"
   },
   "devDependencies": {
@@ -55,6 +54,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "cy:open": "cypress open",
+    "cy:dev": "CI=true yarn build && yarn serve",
     "test": "cypress run --browser chrome --headless"
   },
   "repository": {
