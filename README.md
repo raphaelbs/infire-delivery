@@ -8,3 +8,7 @@ It uses Netflify CMS integrated with this repository.
 
 - Add item page
 - Add share button
+
+## License
+
+Licensed under the [GNU LGPL](./LICENSE) license.
