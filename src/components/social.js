@@ -1,52 +1,50 @@
-import React from "react";
-import { SocialIcon } from "react-social-icons";
+import React from 'react';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
-import Box from "@material-ui/core/Box";
-import Link from "@material-ui/core/Link";
-import Button from "@material-ui/core/Button";
-import withTheme from "@material-ui/styles/withTheme";
+import Box from '@material-ui/core/Box';
+import Link from '@material-ui/core/Link';
 
-import { WHATSAPP_URL, INSTAGRAM_URL } from "../constants";
+import { WHATSAPP_URL, INSTAGRAM_URL, INSTAGRAM_NAME, PHONE_NUMBER } from '../constants';
+import Instagram from '../icons/Instagram';
+import Whatsapp from '../icons/Whatsapp';
 
-const iconStyle = { width: 32, height: 32, marginLeft: 4 };
-const buttonStyle = { padding: 0 };
-
-const Social = ({ theme }) => {
+const Social = () => {
   const onClick = (href, analyticEventName) => () => {
     trackCustomEvent({
       category: 'social-media',
       action: analyticEventName,
-    })
-    window.open(href, "_blank");
+    });
+    return false;
   };
 
   return (
     <Box display="flex" justifyContent="space-between" mt={1}>
-      <Button style={buttonStyle} onClick={onClick(INSTAGRAM_URL, "instagram")} disableTouchRipple disableRipple>
-        <Link color="textPrimary" variant="caption" underline="always">
-          @infiredelivery
-        </Link>
-        <SocialIcon
-          network="instagram"
-          bgColor={theme.palette.primary.main}
-          fgColor="white"
-          style={iconStyle}
-        />
-      </Button>
-      <Button style={buttonStyle} onClick={onClick(WHATSAPP_URL, "whatsapp")} disableTouchRipple disableRipple>
-        <Link color="textPrimary" variant="caption" underline="always">
-          (37) 98832-9573
-        </Link>
-        <SocialIcon
-          network="whatsapp"
-          bgColor={theme.palette.primary.main}
-          fgColor="white"
-          style={iconStyle}
-        />
-      </Button>
+      <Link
+        color="textPrimary"
+        variant="caption"
+        underline="always"
+        data-testid="instagram"
+        onClick={onClick(INSTAGRAM_URL, 'instagram')}
+        href={INSTAGRAM_URL}
+        target="_blank"
+      >
+        <span>@{INSTAGRAM_NAME}</span>
+        <Instagram />
+      </Link>
+      <Link
+        color="textPrimary"
+        variant="caption"
+        underline="always"
+        data-testid="whatsapp"
+        onClick={onClick(WHATSAPP_URL, 'whatsapp')}
+        href={WHATSAPP_URL}
+        target="_blank"
+      >
+        <span>{PHONE_NUMBER}</span>
+        <Whatsapp />
+      </Link>
     </Box>
   );
 };
 
-export default withTheme(Social);
+export default Social;
