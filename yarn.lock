@@ -12214,10 +12214,10 @@ netlify-cms-lib-util@^2.10.0:
     localforage "^1.7.3"
     semaphore "^1.1.0"
 
-netlify-cms-locales@^1.15.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/netlify-cms-locales/-/netlify-cms-locales-1.15.0.tgz#d4aa81211f8a7ce79083d7c642833db390aa6b47"
-  integrity sha512-bBOipUFNSkmn37VIEDXe9j671N0q6p+GVW56YPd66AvCKv1ev5Uz+h8Su+SYjnmICOehvNGCcqB0GRZ2cpxldA==
+netlify-cms-locales@^1.15.0, netlify-cms-locales@^1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/netlify-cms-locales/-/netlify-cms-locales-1.16.0.tgz#7ab26c800fede842112cb7f30c95170ccbf8048d"
+  integrity sha512-YBH5hJQ7u94hfW+h54wwheMIfVfNMDxtSjK5adrmXw/AFAwhlpNMs/Ogi7jupG7OK1Vl8ydTA8IlctU59V7fug==
 
 netlify-cms-ui-default@^2.11.0:
   version "2.11.0"
