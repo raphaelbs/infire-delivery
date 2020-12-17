@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const getAnalytics = () => process.env.CI ? [] : [{
+const getAnalytics = () => process.env.CI === 'true' ? [] : [{
   resolve: 'gatsby-plugin-google-analytics',
   options: {
     trackingId: 'UA-158091113-1',
@@ -118,7 +118,6 @@ module.exports = {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
-        enableIdentityWidget: false,
       },
     },
     {
