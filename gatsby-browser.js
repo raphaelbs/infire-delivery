@@ -12,7 +12,7 @@ const { initializeEcommerce } = require('./src/utils/ga');
 
 // You can delete this file if you're not using it
 exports.onClientEntry = () => {
-  if (process.env.NODE_ENV === 'development' || process.env.CI) {
+  if (process.env.NODE_ENV === 'development' || process.env.CI === 'true') {
     return;
   }
 
@@ -20,7 +20,7 @@ exports.onClientEntry = () => {
     dsn: 'https://7fd6de81b2484ea18e6392ddd131ddb4@sentry.io/5170131',
     // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
     environment: process.env.NODE_ENV,
-    enabled: process.env.NODE_ENV === 'production' && !process.env.CI,
+    enabled: process.env.NODE_ENV === 'production' && process.env.CI !== 'true',
     release: `infire@${process.env.BUILD_ID}`,
     integrations: [
       new CaptureConsole({
