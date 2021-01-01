@@ -32,7 +32,7 @@
     "gatsby-transformer-sharp": "^2.5.14",
     "netlify-cms-app": "^2.12.14",
     "netlify-cms-locales": "^1.18.1",
-    "preact": "^10.4.4",
+    "preact": "^10.5.8",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.13.1",
