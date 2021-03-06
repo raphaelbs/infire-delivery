@@ -23,7 +23,7 @@ const Typography = ({ children, ...props }) => {
   );
 };
 Typography.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
 
 export default Typography;

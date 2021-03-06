@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Add from '@material-ui/icons/Add';
 import Remove from '@material-ui/icons/Remove';
@@ -28,7 +29,13 @@ const itemCountStyles = makeStyles(theme => ({
   },
 }));
 
-const ItemCount = ({ itemId, updateBag, updateBagCount, bagCount }) => {
+const ItemCount = ({ itemId }) => {
+  const dispatch = useDispatch();
+  const bagCount = useSelector(({ bagCount }) => bagCount);
+
+  const updateBag = React.useCallback((itemId, newQtd) => dispatch(updateBagAction(itemId, newQtd)), []);
+  const updateBagCount = React.useCallback((operation) => dispatch(updateBagCountAction(operation)), []);
+
   const [isOpen] = useIsOpen();
   const classes = itemCountStyles();
   const [qtd, setQtd] = useState(0);
@@ -68,14 +75,11 @@ const ItemCount = ({ itemId, updateBag, updateBagCount, bagCount }) => {
         </IconButton>
       </Box>
     </fieldset>
-  )
+  );
 };
 
-const mapStateToProps = ({ bagCount }) => ({ bagCount });
+ItemCount.propTypes = {
+  itemId: PropTypes.string,
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  updateBag: (itemId, newQtd) => dispatch(updateBagAction(itemId, newQtd)),
-  updateBagCount: (operation) => dispatch(updateBagCountAction(operation)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemCount);
+export default React.memo(ItemCount);

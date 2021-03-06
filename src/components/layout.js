@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import withTheme from "@material-ui/styles/withTheme";
+import withTheme from '@material-ui/styles/withTheme';
 
-import ErrorBoundary from "./ErrorBoundary";
-import Header from "./header";
-import { MAX_WIDTH } from "../constants";
-import Footer from "./footer";
-import Cart from "./cart";
+import ErrorBoundary from './ErrorBoundary';
+import Header from './header';
+import { MAX_WIDTH } from '../constants';
+import Footer from './footer';
+import Cart from './cart';
 
 const Layout = ({ children, subtitle }) => {
   const data = useStaticQuery(siteMetadata);
@@ -19,9 +19,9 @@ const Layout = ({ children, subtitle }) => {
       <Header siteTitle={seo.title} subtitle={subtitle} />
       <div
         style={{
-          margin: `0 auto`,
+          margin: '0 auto',
           maxWidth: MAX_WIDTH,
-          padding: `0px 1rem 1rem`,
+          padding: '0px 1rem 1rem',
           paddingTop: 0,
         }}
       >

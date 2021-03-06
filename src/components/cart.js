@@ -1,10 +1,9 @@
 import React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useStaticQuery, graphql } from 'gatsby';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
-import withTheme from '@material-ui/styles/withTheme';
+import useTheme from '@material-ui/styles/useTheme';
 import CloseIcon from '@material-ui/icons/Close';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 
@@ -28,9 +27,17 @@ const dialogTitleStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(2),
   }
-}))
+}));
 
-const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
+const Cart = () => {
+  const theme = useTheme();
+  const dispatch = useDispatch();
+  const bag = useSelector(({ bag }) => bag);
+  const open = useSelector(({ bagVisibility }) => bagVisibility);
+
+  const onClearBag = React.useCallback(() => dispatch(clearBagAction()), []);
+  const onClose = React.useCallback(() => dispatch(setBagVisibilityAction(false)), []);
+
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const dialogTitleClass = dialogTitleStyles();
   const data = useStaticQuery(graphQl);
@@ -38,13 +45,13 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
   const { title, pedirBtn, limparBtn, freteMsg } = data.pageData.edges[0].node.frontmatter;
 
   const cardapio = data.produtos.edges
-  .reduce((edges, edge) => ({ ...edges, [edge.node.id]: edge.node.frontmatter }), {});
+    .reduce((edges, edge) => ({ ...edges, [edge.node.id]: edge.node.frontmatter }), {});
 
   const filteredBag = Object.entries(bag).filter(([, qtd]) => qtd > 0);
   const selectedItems = filteredBag.map(([id, qtd]) => ({ ...cardapio[id], qtd, id }));
   const total = selectedItems.reduce((sum, { qtd, price }) => qtd * price + sum, 0);
 
-  const pedirUrl = WHATSAPP_URL + "?text=" + PEDIR_TEXT(selectedItems);
+  const pedirUrl = WHATSAPP_URL + '?text=' + PEDIR_TEXT(selectedItems);
   const onPedir = () => {
     selectedItems.forEach(({ title, price, qtd, id }) => {
       ecommerceAddItem({
@@ -62,7 +69,7 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
       );
     });
     ecommerceFinalize();
-    window.open(pedirUrl, "_blank");
+    window.open(pedirUrl, '_blank');
   };
 
   return (
@@ -90,20 +97,10 @@ const Cart = ({ open, bag, theme, onClearBag, onClose }) => {
         >{pedirBtn}</Button>
       </DialogActions>
     </Dialog>
-  )
+  );
 };
 
-const mapStateToProps = ({ bag, bagVisibility }) => ({ bag, open: bagVisibility });
-
-const mapDispatchToProps = (dispatch) => ({
-  onClearBag: () => dispatch(clearBagAction()),
-  onClose: () => dispatch(setBagVisibilityAction(false)),
-})
-
-export default compose(
-  withTheme,
-  connect(mapStateToProps, mapDispatchToProps)
-)(Cart);
+export default React.memo(Cart);
 
 const graphQl = graphql`
 query {

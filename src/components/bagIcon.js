@@ -1,12 +1,13 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 
 import Badge from '@material-ui/core/Badge';
 
-const BagIcon = ({ bagCount }) => {
+const BagIcon = () => {
+  const bagCount = useSelector(({ bagCount }) => bagCount);
+  
   return (
     <Badge aria-label="Quantidade de itens" badgeContent={bagCount} color="primary" max={99}>
       <ShoppingCart />
@@ -14,6 +15,4 @@ const BagIcon = ({ bagCount }) => {
   );
 };
 
-const mapStateToProps = ({ bagCount }) => ({ bagCount });
-
-export default connect(mapStateToProps)(BagIcon);
+export default React.memo(BagIcon);
