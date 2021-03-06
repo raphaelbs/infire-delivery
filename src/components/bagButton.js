@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import makeStyles from '@material-ui/styles/makeStyles';
 
@@ -25,7 +24,11 @@ const classStyles = makeStyles(theme => ({
   },
 }));
 
-const BagButton = ({ openCart }) => {
+const BagButton = () => {
+  const dispatch = useDispatch();
+
+  const openCart = React.useCallback(() => dispatch(setBagVisibilityAction(true)), []);
+  
   const [isOpen] = useIsOpen();
   const classes = classStyles();
 
@@ -36,8 +39,4 @@ const BagButton = ({ openCart }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  openCart: () => dispatch(setBagVisibilityAction(true)),
-});
-
-export default connect(null, mapDispatchToProps)(BagButton);
+export default React.memo(BagButton);

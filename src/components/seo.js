@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -85,7 +85,7 @@ SEO.propTypes = {
   image: PropTypes.string,
 };
 
-export default memo(SEO);
+export default React.memo(SEO);
 
 const seoMetadata = graphql`
 query {
