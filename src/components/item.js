@@ -8,22 +8,32 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
 import makeStyles from '@material-ui/styles/makeStyles';
 
 import Typography from './Typography';
 import { displayPrice } from '../constants';
 import ItemCount from './itemCount';
 
-const imageStyle = { width: 256, height: 256, margin: '0 auto' };
-const gatsbyImageStyle = { display: 'block', margin: '0 auto' };
+const imgStyle = { objectFit: 'contain' };
+const gatsbyImageStyle = { maxHeight: 256, display: 'block', margin: '0 auto' };
 
 const imageStyles = makeStyles(() => ({
-  root: imageStyle,
+  root: {
+    width: 256,
+    maxHeight: 256,
+    margin: '0 auto',
+    flex: '1',
+    display: 'flex',
+    alignItems: 'center'
+  },
 }));
 
 const cardStyles = makeStyles(theme => ({
   root: {
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
     marginBottom: theme.spacing(2),
   },
 }));
@@ -46,11 +56,11 @@ const Item = ({ id, title, image, price, description }) => {
   const classes = styles();
 
   return (
-    <Grid item container xs sm={6} md={4} alignItems="center" direction="column" data-testid="product">
+    <div data-testid="product">
       <Card classes={cardClass}>
         <CardHeader title={title} />
         <CardMedia classes={imageClass}>
-          <GatsbyImage style={gatsbyImageStyle} fixed={image.childImageSharp.fixed} loading="lazy" />
+          <GatsbyImage style={gatsbyImageStyle} fixed={image.childImageSharp.fixed} loading="lazy" imgStyle={imgStyle} />
         </CardMedia>
         <CardContent>
           <Typography className={classes.description} variant="body1" color="textSecondary" component="p">
@@ -66,7 +76,7 @@ const Item = ({ id, title, image, price, description }) => {
           </Box>
         </CardActions>
       </Card>
-    </Grid>
+    </div>
   );
 };
 Item.propTypes = {

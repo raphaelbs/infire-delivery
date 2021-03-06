@@ -1,9 +1,17 @@
 import React, { memo } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import Grid from '@material-ui/core/Grid';
+import makeStyles from '@material-ui/styles/makeStyles';
 
 import Item from '../components/item';
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+    gridGap: theme.spacing(3),
+  },
+}));
 
 const sortByOrder = (
   { order: order1 = Infinity },
@@ -11,18 +19,19 @@ const sortByOrder = (
 ) => (order1 > order2 ? 1 : -1);
 
 const Cardapio = () => {
+  const classes = useStyles();
   const data = useStaticQuery(cardapioGQL);
   const cardapio = data.allMarkdownRemark.edges
     .map((edge) => ({ id: edge.node.id, ...edge.node.frontmatter }));
 
   return (
-    <Grid container>
+    <div className={classes.container}>
       {
         cardapio
           .sort(sortByOrder)
           .map(item => (<Item {...item} key={item.id} />))
       }
-    </Grid>
+    </div>
   );
 };
 
@@ -44,7 +53,7 @@ query {
                 turdSize: 10
                 threshold: 250
                 optTolerance: 0.6
-              }, height: 256) {
+              }, width: 256) {
                 ...GatsbyImageSharpFixed_withWebp_tracedSVG
               }
             }
