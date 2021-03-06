@@ -22,7 +22,9 @@ const imageStyles = makeStyles(() => ({
     width: 256,
     maxHeight: 256,
     margin: '0 auto',
-    flex: '1'
+    flex: '1',
+    display: 'flex',
+    alignItems: 'center'
   },
 }));
 
@@ -30,6 +32,7 @@ const cardStyles = makeStyles(theme => ({
   root: {
     height: '100%',
     display: 'flex',
+    justifyContent: 'space-between',
     flexDirection: 'column',
     marginBottom: theme.spacing(2),
   },
