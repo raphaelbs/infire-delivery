@@ -1,52 +1,28 @@
 import React from 'react';
-import { SocialIcon } from 'react-social-icons';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
-import Button from '@material-ui/core/Button';
-import useTheme from '@material-ui/styles/useTheme';
 
 import { WHATSAPP_URL, INSTAGRAM_URL } from '../constants';
-
-const iconStyle = { width: 32, height: 32, marginLeft: 4 };
-const buttonStyle = { padding: 0 };
+import { InstagramIcon, WhatsAppIcon } from './icons';
 
 const Social = () => {
-  const theme = useTheme();
-
-  const onClick = (href, analyticEventName) => () => {
+  const track = (analyticEventName) => () => {
     trackCustomEvent({
       category: 'social-media',
       action: analyticEventName,
     });
-    window.open(href, '_blank');
   };
 
   return (
     <Box display="flex" justifyContent="space-between" mt={1}>
-      <Button style={buttonStyle} onClick={onClick(INSTAGRAM_URL, 'instagram')} disableTouchRipple disableRipple>
-        <Link color="textPrimary" variant="caption" underline="always">
-          @infiredelivery
-        </Link>
-        <SocialIcon
-          network="instagram"
-          bgColor={theme.palette.primary.main}
-          fgColor="white"
-          style={iconStyle}
-        />
-      </Button>
-      <Button style={buttonStyle} onClick={onClick(WHATSAPP_URL, 'whatsapp')} disableTouchRipple disableRipple>
-        <Link color="textPrimary" variant="caption" underline="always">
-          (37) 98832-9573
-        </Link>
-        <SocialIcon
-          network="whatsapp"
-          bgColor={theme.palette.primary.main}
-          fgColor="white"
-          style={iconStyle}
-        />
-      </Button>
+      <Link color="textPrimary" variant="caption" underline="always" href={INSTAGRAM_URL} target="_blank" rel="noopener" onClick={track('instagram')}>
+        <span>@infiredelivery</span><InstagramIcon />
+      </Link>
+      <Link color="textPrimary" variant="caption" underline="always" href={WHATSAPP_URL} target="_blank" rel="noopener" onClick={track('whatsapp')}>
+        <span>(37) 98832-9573</span><WhatsAppIcon />
+      </Link>
     </Box>
   );
 };

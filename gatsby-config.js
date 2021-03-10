@@ -20,7 +20,7 @@ module.exports = {
       'sanduiche',
       'batata',
     ],
-    siteUrl: 'https://infire.delivery/',
+    siteUrl: 'https://infire-delivery.now.sh/',
   },
   plugins: [
     ...getAnalytics(),
@@ -92,7 +92,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://infire.delivery/',
+        siteUrl: 'https://infire-delivery.now.sh/',
       },
     },
     {
