@@ -1,7 +1,7 @@
-const trackCustomEvent = require('gatsby-plugin-google-analytics');
 const Sentry = require('@sentry/browser');
 const { CaptureConsole } = require('@sentry/integrations');
 
+const { trackEvent } = require('./src/tracking');
 const { initializeEcommerce } = require('./src/utils/ga');
 
 /**
@@ -32,9 +32,8 @@ exports.onClientEntry = () => {
   window.addEventListener('beforeinstallprompt', e => {
     e.preventDefault();
     e.userChoice.then(choiceResult => {
-      trackCustomEvent({
-        category: 'add-to-homescreen',
-        action: 'prompt',
+      trackEvent('add-to-homescreen', {
+        type: 'prompt',
         value: choiceResult.outcome,
       });
     });

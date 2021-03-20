@@ -1,9 +1,7 @@
-import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
-
-export function trackEvent(event) {
+export function trackEvent(name, props) {
   if (process.env.NODE_ENV === 'development') {
     return;
   }
 
-  return trackCustomEvent(event);
+  window && typeof window.plausible === 'function' && window.plausible(name, { props });
 }

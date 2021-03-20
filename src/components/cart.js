@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useStaticQuery, graphql } from 'gatsby';
-import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
 import useTheme from '@material-ui/styles/useTheme';
 import CloseIcon from '@material-ui/icons/Close';
@@ -22,6 +21,7 @@ import { setBagVisibilityAction } from '../effects/setBagVisibility.effect';
 import CartContent from './cartContent';
 import { PEDIR_TEXT, WHATSAPP_URL } from '../constants';
 import { ecommerceAddItem, ecommerceFinalize } from '../utils/ga';
+import { trackEvent } from '../tracking';
 
 const dialogTitleStyles = makeStyles(theme => ({
   root: {
@@ -61,10 +61,11 @@ const Cart = () => {
         quantity: qtd,
       });
       Array(qtd).fill(1).forEach(() =>
-        trackCustomEvent({
-          category: 'item',
-          action: title,
-          value: parseInt(price * 100, 10),
+        trackEvent('item', {
+          props: {
+            name: title,
+            value: parseInt(price * 100, 10),
+          }
         })
       );
     });

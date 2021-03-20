@@ -8,8 +8,7 @@ export const setBagVisibilityAction = (visibility) => ({
 });
 
 export const handleSetBagVisibilityAction = (state, { visibility }) => {
-  trackEvent({
-    category: 'redux',
+  trackEvent('redux', {
     action: SET_BAG_VISIBILITY,
     value: visibility ? 1 : 0,
   }); 

@@ -7,8 +7,7 @@ export const clearBagAction = () => ({
 });
 
 export const handleClearBag = (state) => {
-  trackEvent({
-    category: 'redux',
+  trackEvent('redux', {
     action: CLEAR_BAG,
   });
 

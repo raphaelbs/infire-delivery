@@ -1,18 +1,15 @@
 import React from 'react';
-import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 
 import { WHATSAPP_URL, INSTAGRAM_URL } from '../constants';
 import { InstagramIcon, WhatsAppIcon } from './icons';
+import { trackEvent } from '../tracking';
 
 const Social = () => {
-  const track = (analyticEventName) => () => {
-    trackCustomEvent({
-      category: 'social-media',
-      action: analyticEventName,
-    });
+  const track = (type) => () => {
+    trackEvent('social-media', { type });
   };
 
   return (

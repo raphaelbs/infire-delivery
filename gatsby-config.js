@@ -1,9 +1,9 @@
 require('dotenv').config();
 
 const getAnalytics = () => process.env.CI === 'true' ? [] : [{
-  resolve: 'gatsby-plugin-google-analytics',
+  resolve: 'gatsby-plugin-plausible',
   options: {
-    trackingId: 'UA-158091113-1',
+    domain: 'infire-delivery.now.sh',
   },
 }];
 
