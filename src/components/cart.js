@@ -77,7 +77,7 @@ const Cart = () => {
       <DialogTitle disableTypography classes={dialogTitleClass}>
         <Box width="100%" display="flex" justifyContent="space-between">
           <Typography variant="h6">{title}</Typography>
-          <IconButton size="small" edge="end" aria-label="close" onClick={onClose}>
+          <IconButton size="small" edge="end" aria-label="Fechar carrinho" onClick={onClose}>
             <CloseIcon />
           </IconButton>
         </Box>
