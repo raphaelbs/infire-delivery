@@ -1,0 +1,22 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "02:00"
+    timezone: America/Belem
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: gatsby-plugin-manifest
+    versions:
+    - 2.11.0
+    - 2.6.1
+  - dependency-name: cypress
+    versions:
+    - 6.2.0
+    - 6.3.0
+  - dependency-name: gatsby-plugin-sharp
+    versions:
+    - 2.11.2
+    - 2.13.4
